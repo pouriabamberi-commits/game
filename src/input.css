@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+    /* تنظیم فونت وزdates */
+    --font-vazir: "Vazirmatn", sans-serif;
+
+    /* تنظیم پلت رنگی اختصاصی برند */
+    --color-brand-dark: #050b10;
+    --color-brand-card: #0d1923;
+    --color-brand-border: rgba(0, 245, 212, 0.18);
+    --color-brand-teal: #00f5d4;
+    --color-brand-cyan: #00d2ff;
+    --color-brand-accent: #05b292;
+    --color-brand-glow: rgba(0, 245, 212, 0.35);
+}
