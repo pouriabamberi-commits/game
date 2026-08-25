@@ -19,21 +19,27 @@
         rel="stylesheet">
 
     <!-- Alpine.js -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="./library/cdn.min.js"></script>
     <!-- Tailwind CSS  -->
     <link rel="stylesheet" href="./styles/output.css">
 
     <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./library/swiper-bundle.min.css" />
 
     <!-- AOS (Animate On Scroll) CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="./library/aos.css" />
 
     <!-- SweetAlert2 CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="./library/sweetalert2.min.css">
 
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- JS Libraries -->
+    <script src="./library/purecounter_vanilla.js"></script>
+    <script src="./library/swiper-bundle.min.js"></script>
+    <script src="./library/aos.js"></script>
+    <script src="./library/sweetalert2@11.js"></script>
 
     <style>
         body {
@@ -148,19 +154,23 @@
 
                 <!-- 2. Desktop Navigation (شامل هر ۶ بخش درخواست‌شده) -->
                 <nav class="hidden lg:flex items-center gap-6 text-sm font-bold text-slate-300">
-                    <a href="./index.html" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                    <a href="./index.html"
+                        class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
                         <i class="fa-solid fa-house text-xs text-brand-teal"></i>
                         <span>خانه</span>
                     </a>
-                    <a href="./about.html" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                    <a href="./about.html"
+                        class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
                         <i class="fa-solid fa-users text-xs text-brand-teal"></i>
                         <span>درباره ما</span>
                     </a>
-                    <a href="./portfolio.html" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                    <a href="./portfolio.html"
+                        class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
                         <i class="fa-solid fa-briefcase text-xs text-brand-teal"></i>
                         <span>نمونه کارها</span>
                     </a>
-                    <a href="./servise.html "class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                    <a href="./servise.html "
+                        class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
                         <i class="fa-solid fa-layer-group text-xs text-brand-teal"></i>
                         <span>خدمات و تخصص‌ها</span>
                     </a>
@@ -169,7 +179,8 @@
                         <i class="fa-solid fa-comments text-xs text-brand-teal"></i>
                         <span>نظرات</span>
                     </a>
-                    <a href="#contact" onclick="fireSwal()" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                    <a href="#contact" onclick="fireSwal()"
+                        class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
                         <i class="fa-solid fa-envelope text-xs text-brand-teal"></i>
                         <span>تماس با ما</span>
                     </a>
@@ -987,11 +998,6 @@
         </button>
     </div>
 
-    <!-- JS Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/@srexi/purecounterjs/dist/purecounter_vanilla.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         function changeLanguage(lang) {
@@ -1133,16 +1139,16 @@
                 }
             });
         }
-    
+
         // fire swal
-        function fireSwal(){
+        function fireSwal() {
             Swal.fire({
                 title: '<span class="text-gradient font-black" style="font-family: Vazirmatn;"> برای مشاوره رایگان روی  دکمه مشاوره رایگان کلیک کنید</span>',
                 background: '#0D1923',
                 color: '#F1F5F9',
                 showCancelButton: true,
                 confirmButtonText: 'تایید',
-                cancelButtonText:'انصراف',
+                cancelButtonText: 'انصراف',
                 customClass: {
                     popup: 'rounded-3xl border border-emerald-500/30 glass-card',
                     confirmButton: 'bg-gradient-to-r from-emerald-400 to-cyan-400 text-slate-950 font-black px-6 py-3 rounded-xl border-0 shadow-lg',
