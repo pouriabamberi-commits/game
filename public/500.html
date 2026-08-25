@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خطای داخلی سرور | Apexo 500</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="robots" content="noindex, follow">
+
+    <!-- Fonts: Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Project Compiled CSS (Tailwind v4 Output) -->
+    <link rel="stylesheet" href="./styles/output.css">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Vazirmatn', var(--font-sans);
+            background-color: var(--color-brand-dark);
+            color: var(--color-slate-100);
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism using project tokens */
+        .glass-card {
+            background: color-mix(in srgb, var(--color-brand-card) 70%, transparent);
+            backdrop-filter: blur(var(--blur-xl));
+            -webkit-backdrop-filter: blur(var(--blur-xl));
+            border: 1px solid color-mix(in srgb, #ff0055 20%, transparent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .glass-card:hover {
+            border-color: color-mix(in srgb, #ff0055 45%, transparent);
+            box-shadow: 0 12px 40px color-mix(in srgb, #ff0055 20%, transparent);
+        }
+
+        .glass-nav {
+            background: color-mix(in srgb, var(--color-brand-dark) 80%, transparent);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid color-mix(in srgb, var(--color-brand-teal) 12%, transparent);
+        }
+
+        /* Glow and Gradient Utilities */
+        .text-gradient-danger {
+            background: linear-gradient(135deg, #ff0055 0%, #ff5500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-gradient {
+            background: linear-gradient(135deg, var(--color-brand-teal) 0%, var(--color-brand-cyan) 100%);
+            transition: all var(--default-transition-duration) var(--default-transition-timing-function);
+        }
+
+        .btn-gradient:hover {
+            box-shadow: 0 0 30px color-mix(in srgb, var(--color-brand-teal) 60%, transparent);
+            transform: translateY(-2px);
+        }
+
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: 0;
+            opacity: 0.25;
+            pointer-events: none;
+        }
+
+        /* Keyframe Animations */
+        @keyframes server-pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.04);
+            }
+        }
+
+        @keyframes pulse-glow-danger {
+
+            0%,
+            100% {
+                filter: drop-shadow(0 0 15px rgba(255, 0, 85, 0.4));
+            }
+
+            50% {
+                filter: drop-shadow(0 0 35px rgba(255, 85, 0, 0.8));
+            }
+        }
+
+        @keyframes glitch-shake {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            20% {
+                transform: translate(-2px, 2px);
+            }
+
+            40% {
+                transform: translate(-2px, -2px);
+            }
+
+            60% {
+                transform: translate(2px, 2px);
+            }
+
+            80% {
+                transform: translate(2px, -2px);
+            }
+        }
+
+        .animate-server {
+            animation: server-pulse 4s ease-in-out infinite;
+        }
+
+        .animate-glow-text-danger {
+            animation: pulse-glow-danger 3s infinite ease-in-out;
+        }
+
+        .animate-glitch {
+            animation: glitch-shake 2s infinite ease-in-out;
+        }
+
+        .particle-warning {
+            position: absolute;
+            border-radius: 50%;
+            background: color-mix(in srgb, #ff0055 50%, transparent);
+            animation: float-up 8s infinite linear;
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-10vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="relative selection:bg-brand-teal selection:text-brand-dark min-h-screen flex flex-col justify-between overflow-x-hidden">
+
+    <!-- Ambient Glow Orbs (Warmer / Red Accent for Server Error) -->
+    <div class="glow-orb w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-[#ff0055] -top-20 -right-20"></div>
+    <div class="glow-orb w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-brand-cyan top-[35%] -left-40"></div>
+    <div class="glow-orb w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-[#ff5500] bottom-0 right-0"></div>
+
+    <!-- Background Floating Light Particles -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="particle-warning w-2 h-2 left-10" style="animation-duration: 8s; animation-delay: 0s;"></div>
+        <div class="particle-warning w-2.5 h-2.5 left-1/2" style="animation-duration: 11s; animation-delay: 1.5s;">
+        </div>
+        <div class="particle-warning w-1.5 h-1.5 left-3/4" style="animation-duration: 9s; animation-delay: 3s;"></div>
+        <div class="particle-warning w-3 h-3 right-12" style="animation-duration: 10s; animation-delay: 0.5s;"></div>
+    </div>
+
+    <!-- ==================== HEADER ==================== -->
+
+    <header x-data="{ mobileMenuOpen: false, searchModalOpen: false }"
+        class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+
+                <!-- 1. Logo -->
+                <a href="#home" class="flex items-center gap-3 group">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-teal to-brand-cyan flex items-center justify-center text-brand-dark font-black text-xl shadow-lg shadow-brand-teal/20 group-hover:scale-105 transition-transform">
+                        A
+                    </div>
+                    <span class="text-2xl font-black tracking-wider text-slate-100">Apexo<span
+                            class="text-brand-teal">.</span></span>
+                </a>
+
+                <!-- 2. Desktop Navigation (شامل هر ۶ بخش درخواست‌شده) -->
+                <nav class="hidden lg:flex items-center gap-6 text-sm font-bold text-slate-300">
+                    <a href="#home" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                        <i class="fa-solid fa-house text-xs text-brand-teal"></i>
+                        <span>خانه</span>
+                    </a>
+                    <a href="#about" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                        <i class="fa-solid fa-users text-xs text-brand-teal"></i>
+                        <span>درباره ما</span>
+                    </a>
+                    <a href="#portfolio" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                        <i class="fa-solid fa-briefcase text-xs text-brand-teal"></i>
+                        <span>نمونه کارها</span>
+                    </a>
+                    <a href="#services" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                        <i class="fa-solid fa-layer-group text-xs text-brand-teal"></i>
+                        <span>خدمات و تخصص‌ها</span>
+                    </a>
+                    <a href="#testimonials"
+                        class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                        <i class="fa-solid fa-comments text-xs text-brand-teal"></i>
+                        <span>نظرات</span>
+                    </a>
+                    <a href="#contact" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                        <i class="fa-solid fa-envelope text-xs text-brand-teal"></i>
+                        <span>تماس با ما</span>
+                    </a>
+
+                </nav>
+
+                <!-- Language Switcher Dropdown -->
+                <div class="relative inline-block text-right" x-data="{ open: false }">
+                    <!-- Main Toggle Button -->
+                    <button @click="open = !open" @click.outside="open = false" type="button"
+                        class="glass-card px-3 py-2 rounded-xl border border-brand-teal/20 text-slate-200 hover:text-brand-teal hover:border-brand-teal/50 transition-all flex items-center gap-2 text-xs font-bold active:scale-95">
+                        <i class="fa-solid fa-globe text-brand-teal text-sm"></i>
+                        <span id="current-lang-text">فارسی</span>
+                        <i class="fa-solid fa-chevron-down text-[10px] transition-transform duration-200"
+                            :class="open ? 'rotate-180' : ''"></i>
+                    </button>
+
+                    <!-- Dropdown Menu (دستور style حذف شد و x-cloak اضافه شد) -->
+                    <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-150"
+                        x-transition:enter-start="opacity-0 scale-95 -translate-y-2"
+                        x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+                        x-transition:leave="transition ease-in duration-100"
+                        x-transition:leave-start="opacity-100 scale-100 translate-y-0"
+                        x-transition:leave-end="opacity-0 scale-95 -translate-y-2"
+                        class="absolute left-0 mt-2 w-32 rounded-xl bg-slate-950/90 border border-slate-800 shadow-xl backdrop-blur-xl z-[60] overflow-hidden py-1.5">
+
+                        <!-- Persian Option -->
+                        <button type="button" onclick="changeLanguage('fa')" @click="open = false"
+                            class="w-full px-3 py-2 text-right text-xs font-medium text-slate-200 hover:bg-brand-teal/10 hover:text-brand-teal flex items-center justify-between transition-colors">
+                            <span class="flex items-center gap-2">🇮🇷 فارسی</span>
+                            <i id="check-fa" class="fa-solid fa-check text-brand-teal text-xs"></i>
+                        </button>
+
+                        <div class="border-t border-slate-800/80 my-1"></div>
+
+                        <!-- English Option -->
+                        <button type="button" onclick="changeLanguage('en')" @click="open = false"
+                            class="w-full px-3 py-2 text-right text-xs font-medium text-slate-200 hover:bg-brand-teal/10 hover:text-brand-teal flex items-center justify-between transition-colors">
+                            <span class="flex items-center gap-2">🇬🇧 English</span>
+                            <i id="check-en" class="fa-solid fa-check text-brand-teal text-xs hidden"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- 3. Fast Actions (دسترسی سریع و دکمه‌های اکشن) -->
+                <div class="flex items-center gap-3">
+
+
+                    <!-- Desktop Call CTA -->
+                    <button onclick="handleConsultationClick()"
+                        class="hidden sm:flex btn-gradient text-brand-dark font-black px-5 py-2.5 rounded-xl text-xs shadow-md items-center gap-2">
+                        <i class="fa-solid fa-headset"></i>
+                        <span>مشاوره سریع</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Mobile Thumb-Friendly Fullscreen Menu (منوی بهینه موبایل) -->
+        <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0"
+            x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0"
+            x-transition:leave-end="opacity-0 -translate-y-4"
+            class="lg:hidden glass-nav border-t border-brand-teal/20 px-6 py-6 space-y-4 max-h-[85vh] overflow-y-auto"
+            style="display: none;">
+
+            <p class="text-[11px] font-bold text-brand-teal uppercase tracking-widest">دسترسی مستقیم به صفحات</p>
+
+            <div class="grid grid-cols-2 gap-2.5">
+                <a href="#home" @click="mobileMenuOpen = false"
+                    class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800 text-slate-200 hover:border-brand-teal/40">
+                    <i class="fa-solid fa-house text-brand-teal"></i>
+                    <span class="text-xs font-bold">خانه</span>
+                </a>
+                <a href="#about" @click="mobileMenuOpen = false"
+                    class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800 text-slate-200 hover:border-brand-teal/40">
+                    <i class="fa-solid fa-users text-brand-teal"></i>
+                    <span class="text-xs font-bold">درباره ما</span>
+                </a>
+                <a href="#portfolio" @click="mobileMenuOpen = false"
+                    class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800 text-slate-200 hover:border-brand-teal/40">
+                    <i class="fa-solid fa-briefcase text-brand-teal"></i>
+                    <span class="text-xs font-bold">نمونه کارها</span>
+                </a>
+                <a href="#services" @click="mobileMenuOpen = false"
+                    class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800 text-slate-200 hover:border-brand-teal/40">
+                    <i class="fa-solid fa-layer-group text-brand-teal"></i>
+                    <span class="text-xs font-bold">خدمات و تخصص‌ها</span>
+                </a>
+                <a href="#testimonials" @click="mobileMenuOpen = false"
+                    class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800 text-slate-200 hover:border-brand-teal/40">
+                    <i class="fa-solid fa-comments text-brand-teal"></i>
+                    <span class="text-xs font-bold">نظرات</span>
+                </a>
+                <a href="#contact" @click="mobileMenuOpen = false"
+                    class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800 text-slate-200 hover:border-brand-teal/40">
+                    <i class="fa-solid fa-envelope text-brand-teal"></i>
+                    <span class="text-xs font-bold">تماس با ما</span>
+                </a>
+            </div>
+
+            <div class="pt-2">
+                <button onclick="handleConsultationClick()"
+                    class="btn-gradient w-full text-brand-dark font-black py-3.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg">
+                    <i class="fa-solid fa-phone-volume"></i>
+                    <span>ثبت درخواست مشاوره رایگان</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 5. Search & Fast Jump Modal (Ctrl+K) -->
+        <div x-show="searchModalOpen" x-keydown.window.escape="searchModalOpen = false"
+            x-keydown.window.ctrl.k.prevent="searchModalOpen = true"
+            class="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-black/80 backdrop-blur-md"
+            style="display: none;">
+            <div @click.away="searchModalOpen = false"
+                class="w-full max-w-xl glass-card rounded-3xl p-6 border-brand-teal/40 shadow-2xl space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <div class="flex items-center gap-3 w-full">
+                        <i class="fa-solid fa-magnifying-glass text-brand-teal text-lg"></i>
+                        <input type="text" placeholder="به کدام بخش می‌خواهید بروید؟ (تایپ کنید...)"
+                            class="w-full bg-transparent text-sm text-white focus:outline-none" autofocus>
+                    </div>
+                    <button @click="searchModalOpen = false" class="text-slate-400 hover:text-white"><i
+                            class="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <p class="text-[11px] text-slate-400 font-semibold">میانبرهای سریع:</p>
+                <div class="space-y-2">
+                    <a href="#portfolio" @click="searchModalOpen = false"
+                        class="flex items-center justify-between p-3 rounded-xl bg-slate-900/80 hover:bg-brand-teal/10 hover:border-brand-teal/40 border border-slate-800 transition-all text-xs">
+                        <span class="font-bold text-slate-200"><i
+                                class="fa-solid fa-briefcase text-brand-teal ml-2"></i> نمونه‌کارهای اجرا شده</span>
+                        <i class="fa-solid fa-arrow-left text-slate-500"></i>
+                    </a>
+                    <a href="#services" @click="searchModalOpen = false"
+                        class="flex items-center justify-between p-3 rounded-xl bg-slate-900/80 hover:bg-brand-teal/10 hover:border-brand-teal/40 border border-slate-800 transition-all text-xs">
+                        <span class="font-bold text-slate-200"><i
+                                class="fa-solid fa-layer-group text-brand-teal ml-2"></i> لیست خدمات و تخصص‌ها</span>
+                        <i class="fa-solid fa-arrow-left text-slate-500"></i>
+                    </a>
+                    <a href="#contact" @click="searchModalOpen = false"
+                        class="flex items-center justify-between p-3 rounded-xl bg-slate-900/80 hover:bg-brand-teal/10 hover:border-brand-teal/40 border border-slate-800 transition-all text-xs">
+                        <span class="font-bold text-slate-200"><i class="fa-solid fa-envelope text-brand-teal ml-2"></i>
+                            فرم سریع تماس با ما</span>
+                        <i class="fa-solid fa-arrow-left text-slate-500"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ==================== MAIN 500 CONTENT ==================== -->
+    <main
+        class="relative z-10 max-w-5xl mx-auto px-4 pt-28 pb-10 flex-1 flex flex-col justify-center items-center text-center">
+
+        <!-- 500 Floating Server Graphic -->
+        <div class="relative flex items-center justify-center my-1 select-none">
+
+            <!-- Giant Animated 500 Text -->
+            <div
+                class="flex items-center justify-center gap-2 sm:gap-6 font-black text-6xl sm:text-[120px] md:text-7xl tracking-tight text-slate-100 z-10 animate-glow-text-danger">
+                <span class="text-gradient-danger">0</span>
+
+                <!-- Central Server Icon / SVG (0 replacement) -->
+                <div class="relative w-24 h-24 sm:w-36 sm:h-36 flex items-center justify-center animate-server">
+                    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                        <circle cx="100" cy="100" r="75" fill="url(#server-grad)" opacity="0.12" />
+
+                        <!-- Server Rack Container -->
+                        <rect x="40" y="35" width="120" height="130" rx="16" fill="var(--color-brand-card)"
+                            stroke="#ff0055" stroke-width="5" class="animate-glitch" />
+
+                        <!-- Server Slots -->
+                        <rect x="55" y="55" width="90" height="22" rx="6" fill="var(--color-brand-dark)"
+                            stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                        <rect x="55" y="89" width="90" height="22" rx="6" fill="var(--color-brand-dark)"
+                            stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                        <rect x="55" y="123" width="90" height="22" rx="6" fill="var(--color-brand-dark)"
+                            stroke="#ff0055" stroke-width="2" />
+
+                        <!-- LED Lights & Indicators -->
+                        <circle cx="70" cy="66" r="3" fill="var(--color-brand-teal)" />
+                        <circle cx="80" cy="66" r="3" fill="var(--color-brand-teal)" />
+
+                        <circle cx="70" cy="100" r="3" fill="var(--color-brand-teal)" />
+                        <circle cx="80" cy="100" r="3" fill="#ff5500" />
+
+                        <circle cx="70" cy="134" r="3.5" fill="#ff0055" class="animate-ping" />
+                        <circle cx="80" cy="134" r="3" fill="#ff0055" />
+
+                        <!-- Error Warning Badge -->
+                        <path d="M140 45 L155 70 L125 70 Z" fill="#ff0055" stroke="var(--color-brand-dark)"
+                            stroke-width="2" />
+                        <text x="140" y="65" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">!</text>
+
+                        <defs>
+                            <linearGradient id="server-grad" x1="0" y1="0" x2="200" y2="200">
+                                <stop offset="0%" stop-color="#ff0055" />
+                                <stop offset="100%" stop-color="#ff5500" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+
+                <span class="text-gradient-danger">5</span>
+            </div>
+        </div>
+
+        <!-- Text Content Card -->
+        <div class="glass-card rounded-3xl p-6 sm:p-10 max-w-2xl w-full space-y-6 shadow-2xl relative z-20 mt-4">
+            <div
+                class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-bold">
+                <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+                خطای ۵۰۰ - اختلال در سرور مرکزی
+            </div>
+
+            <h1 class="text-2xl sm:text-4xl font-black leading-tight text-slate-100">
+                مشکلی در هسته پردازش <span class="text-gradient-danger">Apexo</span> رخ داده!
+            </h1>
+
+            <p class="text-sm sm:text-base text-slate-300 font-light leading-relaxed">
+                متأسفانه سرورهای ما هنگام پردازش این درخواست با یک خطای داخلی مواجه شدند. تیم فنی ما در حال بررسی و
+                برطرف‌کردن این موضوع است.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button onclick="window.location.reload();"
+                    class="btn-gradient w-full sm:w-auto text-brand-dark font-black px-8 py-4 rounded-2xl text-sm flex items-center justify-center gap-3 shadow-lg cursor-pointer group">
+                    <i class="fa-solid fa-rotate-right group-hover:rotate-180 transition-transform duration-500"></i>
+                    <span>تلاش مجدد (بارگیری دوباره)</span>
+                </button>
+
+                <a href="index.html"
+                    class="glass-card hover:bg-slate-800/60 w-full sm:w-auto text-slate-200 font-bold px-8 py-4 rounded-2xl text-sm transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-house text-brand-teal"></i>
+                    <span>بازگشت به صفحه اصلی</span>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="relative z-10 py-6 text-center text-xs text-slate-500 border-t border-slate-800 glass-nav">
+        <p>© ۲۰۲۶ تمامی حقوق متعلق به <strong class="text-slate-300">Apexo</strong> می‌باشد.</p>
+    </footer>
+
+</body>
+
+</html>
