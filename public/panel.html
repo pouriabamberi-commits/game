@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مدیریت درخواست‌های مشاوره</title>
+
+    <link rel="stylesheet" href="./styles/output.css">
+
+    <!-- Fonts: Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- styles -->
+    <style>
+        :root {
+            --color-brand-teal: #0d9488;
+            --color-brand-cyan: #06b6d4;
+        }
+
+        body {
+            font-family: Vazirmatn;
+        }
+
+        .bg-brand-teal {
+            background-color: var(--color-brand-teal);
+        }
+
+        .text-brand-teal {
+            color: var(--color-brand-teal);
+        }
+
+        .border-brand-teal {
+            border-color: var(--color-brand-teal);
+        }
+
+        .text-brand-cyan {
+            color: var(--color-brand-cyan);
+        }
+
+        .border-brand-cyan {
+            border-color: var(--color-brand-cyan);
+        }
+    </style>
+</head>
+
+<body class="bg-slate-950 text-slate-100 min-h-screen p-4 sm:p-8 font-sans">
+
+    <div class="max-w-7xl mx-auto space-y-6">
+
+        
+        <!-- هدر صفحه -->
+        <div
+            class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-800 pb-5">
+            <div>
+                <h1 class="text-2xl sm:text-3xl font-bold text-white flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-brand-teal inline-block"></span>
+                    مدیریت درخواست‌های مشاوره
+                </h1>
+                <p class="text-slate-400 text-sm mt-1">لیست متقاضیان مشاوره و تغییر وضعیت پیگیری</p>
+            </div>
+
+            <!-- آمار سریع -->
+            <div class="flex items-center gap-3 text-xs">
+                <div class="bg-slate-900 border border-slate-800 rounded-xl px-4 py-2">
+                    <span class="text-slate-400 block">کل درخواست‌ها</span>
+                    <span class="text-lg font-bold text-brand-teal">۳</span>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl px-4 py-2">
+                    <span class="text-slate-400 block">نیازمند تماس</span>
+                    <span class="text-lg font-bold text-amber-400">۱</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- نوار فرم فیلتر و جستجو -->
+        <form
+            class="flex flex-col sm:flex-row gap-4 justify-between items-center bg-slate-900/60 p-4 rounded-2xl border border-slate-800/80 backdrop-blur-md">
+            <!-- جستجو -->
+            <div class="w-full sm:w-80 relative">
+                <input type="text" name="search" placeholder="جستجوی نام یا شماره تماس..."
+                    class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-brand-teal text-slate-200 placeholder:text-slate-500 transition-colors">
+            </div>
+
+            <!-- فیلترها -->
+            <div class="flex items-center gap-2 w-full sm:w-auto">
+                <select name="status_filter"
+                    class="bg-slate-950 border border-slate-800 text-xs rounded-xl px-4 py-2.5 text-slate-300 focus:outline-none focus:border-brand-teal transition-colors w-full sm:w-auto">
+                    <option value="all">همه درخواست‌ها</option>
+                    <option value="pending">جدید / منتظر تماس</option>
+                    <option value="in_progress">در حال بررسی</option>
+                    <option value="completed">تکمیل شده</option>
+                </select>
+                <button type="submit"
+                    class="bg-brand-teal text-slate-950 text-xs font-semibold px-4 py-2.5 rounded-xl hover:opacity-90 transition-opacity">
+                    فیلتر
+                </button>
+            </div>
+        </form>
+
+        <!-- جدول داده‌ها -->
+        <div class="overflow-x-auto rounded-2xl border border-slate-800/80 bg-slate-900/40 backdrop-blur-md">
+            <table class="w-full text-right text-sm">
+                <thead class="bg-slate-900/90 text-slate-400 border-b border-slate-800 text-xs font-semibold">
+                    <tr>
+                        <th class="p-4">کاربر</th>
+                        <th class="p-4">شماره تماس</th>
+                        <th class="p-4">موضوع مشاوره</th>
+                        <th class="p-4">تاریخ ثبت</th>
+                        <th class="p-4">وضعیت فعلی</th>
+                        <th class="p-4 text-center">تغییر وضعیت</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-800/50 text-slate-300">
+
+                    <!-- نفر اول: منتظر تماس -->
+                    <tr class="hover:bg-slate-800/60 transition-colors">
+                        <td class="p-4 font-medium text-white">علی محمدی</td>
+                        <td class="p-4 font-mono dir-ltr text-right text-brand-cyan">09123456789</td>
+                        <td class="p-4 max-w-xs truncate">مشاوره طراحی وب‌سایت</td>
+                        <td class="p-4 text-xs text-slate-400">1403/05/20</td>
+                        <td class="p-4">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                                منتظر تماس
+                            </span>
+                        </td>
+                        <td class="p-4 text-center">
+                            <form action="#" method="POST">
+                                <select name="status" onchange="this.form.submit()"
+                                    class="bg-slate-950 border border-slate-800 text-xs rounded-lg px-2.5 py-1 text-slate-300 focus:outline-none focus:border-brand-teal transition-colors">
+                                    <option value="pending" selected>منتظر تماس</option>
+                                    <option value="in_progress">در حال بررسی</option>
+                                    <option value="completed">تکمیل شده</option>
+                                </select>
+                            </form>
+                        </td>
+                    </tr>
+
+                    <!-- نفر دوم: در حال بررسی -->
+                    <tr class="hover:bg-slate-800/60 transition-colors">
+                        <td class="p-4 font-medium text-white">سارا احمدی</td>
+                        <td class="p-4 font-mono dir-ltr text-right text-brand-cyan">09901234567</td>
+                        <td class="p-4 max-w-xs truncate">بهینه‌سازی و سئو</td>
+                        <td class="p-4 text-xs text-slate-400">1403/05/19</td>
+                        <td class="p-4">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/20">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-cyan"></span>
+                                در حال بررسی
+                            </span>
+                        </td>
+                        <td class="p-4 text-center">
+                            <form action="#" method="POST">
+                                <select name="status" onchange="this.form.submit()"
+                                    class="bg-slate-950 border border-slate-800 text-xs rounded-lg px-2.5 py-1 text-slate-300 focus:outline-none focus:border-brand-teal transition-colors">
+                                    <option value="pending">منتظر تماس</option>
+                                    <option value="in_progress" selected>در حال بررسی</option>
+                                    <option value="completed">تکمیل شده</option>
+                                </select>
+                            </form>
+                        </td>
+                    </tr>
+
+                    <!-- نفر سوم: تکمیل شده -->
+                    <tr class="hover:bg-slate-800/60 transition-colors">
+                        <td class="p-4 font-medium text-white">رضا قاسمی</td>
+                        <td class="p-4 font-mono dir-ltr text-right text-brand-cyan">09350001122</td>
+                        <td class="p-4 max-w-xs truncate">توسعه اپلیکیشن موبایل</td>
+                        <td class="p-4 text-xs text-slate-400">1403/05/18</td>
+                        <td class="p-4">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                تکمیل شده
+                            </span>
+                        </td>
+                        <td class="p-4 text-center">
+                            <form action="#" method="POST">
+                                <select name="status" onchange="this.form.submit()"
+                                    class="bg-slate-950 border border-slate-800 text-xs rounded-lg px-2.5 py-1 text-slate-300 focus:outline-none focus:border-brand-teal transition-colors">
+                                    <option value="pending">منتظر تماس</option>
+                                    <option value="in_progress">در حال بررسی</option>
+                                    <option value="completed" selected>تکمیل شده</option>
+                                </select>
+                            </form>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

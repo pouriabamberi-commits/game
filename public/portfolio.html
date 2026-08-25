@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نمونه‌کارهای حرفه‌ای | Apexo Portfolio</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="نمونه‌کارهای توسعه وب، اپلیکیشن و رابط‌های کاربری مدرن Apexo - طراحی و کدنویسی اختصاصی">
+    <meta name="keywords" content="نمونه کار طراحی سایت, فرانت اند, پورتفولیو, Apexo, توسعه وب">
+    <meta name="robots" content="index, follow">
+
+    <!-- Fonts: Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Project Compiled CSS (Tailwind v4 Output) -->
+    <link rel="stylesheet" href="./styles/output.css">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Vazirmatn', var(--font-sans, sans-serif);
+            background-color: var(--color-brand-dark, #050B10);
+            color: var(--color-slate-100, #F1F5F9);
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism using project tokens */
+        .glass-card {
+            background: color-mix(in srgb, var(--color-brand-card, #0D1923) 75%, transparent);
+            backdrop-filter: blur(var(--blur-xl, 20px));
+            -webkit-backdrop-filter: blur(var(--blur-xl, 20px));
+            border: 1px solid color-mix(in srgb, var(--color-brand-teal, #00F5D4) 18%, transparent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .glass-card:hover {
+            border-color: color-mix(in srgb, var(--color-brand-teal, #00F5D4) 50%, transparent);
+            box-shadow: 0 15px 45px color-mix(in srgb, var(--color-brand-teal, #00F5D4) 22%, transparent);
+        }
+
+        .glass-nav {
+            background: color-mix(in srgb, var(--color-brand-dark, #050B10) 85%, transparent);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid color-mix(in srgb, var(--color-brand-teal, #00F5D4) 15%, transparent);
+        }
+
+        /* Glow and Gradient Utilities */
+        .text-gradient {
+            background: linear-gradient(135deg, var(--color-brand-teal, #00F5D4) 0%, var(--color-brand-cyan, #00D2FF) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-gradient {
+            background: linear-gradient(135deg, var(--color-brand-teal, #00F5D4) 0%, var(--color-brand-cyan, #00D2FF) 100%);
+            transition: all var(--default-transition-duration, 0.3s) var(--default-transition-timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+        }
+
+        .btn-gradient:hover {
+            box-shadow: 0 0 30px color-mix(in srgb, var(--color-brand-teal, #00F5D4) 60%, transparent);
+            transform: translateY(-2px);
+        }
+
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(140px);
+            z-index: 0;
+            opacity: 0.28;
+            pointer-events: none;
+        }
+
+        /* Animations */
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.6;
+                transform: scale(1.08);
+            }
+        }
+
+        @keyframes float-badge {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        .animate-pulse-glow {
+            animation: pulse-glow 4s ease-in-out infinite;
+        }
+
+        .animate-float-badge {
+            animation: float-badge 3s ease-in-out infinite;
+        }
+
+        /* Portfolio Card Specific Effects */
+        .portfolio-card {
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .portfolio-image-container img {
+            transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1), filter 0.5s ease;
+        }
+
+        .portfolio-card:hover .portfolio-image-container img {
+            transform: scale(1.08);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050B10;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #0D2830;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00F5D4;
+        }
+    </style>
+</head>
+
+<body
+    class="relative selection:bg-brand-teal selection:text-brand-dark min-h-screen flex flex-col justify-between overflow-x-hidden">
+
+    <!-- Ambient Glow Orbs -->
+    <div
+        class="glow-orb w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-brand-teal -top-20 -right-20 animate-pulse-glow">
+    </div>
+    <div class="glow-orb w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-brand-cyan top-[35%] -left-40 animate-pulse-glow"
+        style="animation-delay: 2s;"></div>
+    <div class="glow-orb w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-brand-accent bottom-0 right-0 animate-pulse-glow"
+        style="animation-delay: 1s;"></div>
+
+    <!-- Background Floating Light Particles -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="particle w-2 h-2 left-4 opacity-50 bg-brand-teal rounded-full absolute animate-ping"
+            style="animation-duration: 4s;"></div>
+        <div class="particle w-2.5 h-2.5 left-1/2 opacity-30 bg-brand-cyan rounded-full absolute animate-pulse"
+            style="animation-duration: 6s;"></div>
+        <div class="particle w-1.5 h-1.5 right-10 opacity-40 bg-brand-teal rounded-full absolute animate-bounce"
+            style="animation-duration: 5s;"></div>
+    </div>
+
+    <!-- ==================== HEADER ==================== -->
+    <header x-data="{ mobileMenuOpen: false, searchModalOpen: false }"
+        class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+
+                <!-- 1. Logo -->
+                <a href="#home" class="flex items-center gap-3 group">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-teal to-brand-cyan flex items-center justify-center text-brand-dark font-black text-xl shadow-lg shadow-brand-teal/20 group-hover:scale-105 transition-transform">
+                        <img src="./img/photo_5796248624873279473_y.jpg" class="rounded-full" alt="">
+                    </div>
+                    <span class="text-2xl font-black tracking-wider text-slate-100">Apexo<span
+                            class="text-brand-teal">.</span></span>
+                </a>
+
+                <!-- 2. Desktop Navigation (شامل هر ۶ بخش درخواست‌شده) -->
+                <nav class="hidden lg:flex items-center gap-6 text-sm font-bold text-slate-300">
+                    <a href="#home" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                        <i class="fa-solid fa-house text-xs text-brand-teal"></i>
+                        <span>خانه</span>
+                    </a>
+                    <a href="./about.html" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                        <i class="fa-solid fa-users text-xs text-brand-teal"></i>
+                        <span>درباره ما</span>
+                    </a>
+                    <a href="./portfolio.html" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                        <i class="fa-solid fa-briefcase text-xs text-brand-teal"></i>
+                        <span>نمونه کارها</span>
+                    </a>
+                    <a href="./servise.html "class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                        <i class="fa-solid fa-layer-group text-xs text-brand-teal"></i>
+                        <span>خدمات و تخصص‌ها</span>
+                    </a>
+                    <a href="./testimonials.html"
+                        class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                        <i class="fa-solid fa-comments text-xs text-brand-teal"></i>
+                        <span>نظرات</span>
+                    </a>
+                    <a href="#contact" onclick="fireSwal()" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                        <i class="fa-solid fa-envelope text-xs text-brand-teal"></i>
+                        <span>تماس با ما</span>
+                    </a>
+
+                </nav>
+
+                <!-- Language Switcher Dropdown -->
+                <div class="relative inline-block text-right" x-data="{ open: false }">
+                    <!-- Main Toggle Button -->
+                    <button @click="open = !open" @click.outside="open = false" type="button"
+                        class="glass-card px-3 py-2 rounded-xl border border-brand-teal/20 text-slate-200 hover:text-brand-teal hover:border-brand-teal/50 transition-all flex items-center gap-2 text-xs font-bold active:scale-95">
+                        <i class="fa-solid fa-globe text-brand-teal text-sm"></i>
+                        <span id="current-lang-text">فارسی</span>
+                        <i class="fa-solid fa-chevron-down text-[10px] transition-transform duration-200"
+                            :class="open ? 'rotate-180' : ''"></i>
+                    </button>
+
+                    <!-- Dropdown Menu (دستور style حذف شد و x-cloak اضافه شد) -->
+                    <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-150"
+                        x-transition:enter-start="opacity-0 scale-95 -translate-y-2"
+                        x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+                        x-transition:leave="transition ease-in duration-100"
+                        x-transition:leave-start="opacity-100 scale-100 translate-y-0"
+                        x-transition:leave-end="opacity-0 scale-95 -translate-y-2"
+                        class="absolute left-0 mt-2 w-32 rounded-xl bg-slate-950/90 border border-slate-800 shadow-xl backdrop-blur-xl z-[60] overflow-hidden py-1.5">
+
+                        <!-- Persian Option -->
+                        <button type="button" onclick="changeLanguage('fa')" @click="open = false"
+                            class="w-full px-3 py-2 text-right text-xs font-medium text-slate-200 hover:bg-brand-teal/10 hover:text-brand-teal flex items-center justify-between transition-colors">
+                            <span class="flex items-center gap-2">🇮🇷 فارسی</span>
+                            <i id="check-fa" class="fa-solid fa-check text-brand-teal text-xs"></i>
+                        </button>
+
+                        <div class="border-t border-slate-800/80 my-1"></div>
+
+                        <!-- English Option -->
+                        <button type="button" onclick="changeLanguage('en')" @click="open = false"
+                            class="w-full px-3 py-2 text-right text-xs font-medium text-slate-200 hover:bg-brand-teal/10 hover:text-brand-teal flex items-center justify-between transition-colors">
+                            <span class="flex items-center gap-2">🇬🇧 English</span>
+                            <i id="check-en" class="fa-solid fa-check text-brand-teal text-xs hidden"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- 3. Fast Actions (دسترسی سریع و دکمه‌های اکشن) -->
+                <div class="flex items-center gap-3">
+
+
+                    <!-- Desktop Call CTA -->
+                    <button onclick="handleConsultationClick()"
+                        class="hidden sm:flex btn-gradient text-brand-dark font-black px-5 py-2.5 rounded-xl text-xs shadow-md items-center gap-2">
+                        <i class="fa-solid fa-headset"></i>
+                        <span>مشاوره سریع</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Mobile Thumb-Friendly Fullscreen Menu (منوی بهینه موبایل) -->
+        <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0"
+            x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0"
+            x-transition:leave-end="opacity-0 -translate-y-4"
+            class="lg:hidden glass-nav border-t border-brand-teal/20 px-6 py-6 space-y-4 max-h-[85vh] overflow-y-auto"
+            style="display: none;">
+
+            <p class="text-[11px] font-bold text-brand-teal uppercase tracking-widest">دسترسی مستقیم به صفحات</p>
+
+            <div class="grid grid-cols-2 gap-2.5">
+                <a href="#home" @click="mobileMenuOpen = false"
+                    class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800 text-slate-200 hover:border-brand-teal/40">
+                    <i class="fa-solid fa-house text-brand-teal"></i>
+                    <span class="text-xs font-bold">خانه</span>
+                </a>
+                <a href="./about.html" @click="mobileMenuOpen = false"
+                    class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800 text-slate-200 hover:border-brand-teal/40">
+                    <i class="fa-solid fa-users text-brand-teal"></i>
+                    <span class="text-xs font-bold">درباره ما</span>
+                </a>
+                <a href="./portfolio.html" @click="mobileMenuOpen = false"
+                    class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800 text-slate-200 hover:border-brand-teal/40">
+                    <i class="fa-solid fa-briefcase text-brand-teal"></i>
+                    <span class="text-xs font-bold">نمونه کارها</span>
+                </a>
+                <a href="./servise.html" @click=""
+                    class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800 text-slate-200 hover:border-brand-teal/40">
+                    <i class="fa-solid fa-layer-group text-brand-teal"></i>
+                    <span class="text-xs font-bold">خدمات و تخصص‌ها</span>
+                </a>
+                <a href="./testimonials.html" @click="mobileMenuOpen = false"
+                    class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800 text-slate-200 hover:border-brand-teal/40">
+                    <i class="fa-solid fa-comments text-brand-teal"></i>
+                    <span class="text-xs font-bold">نظرات</span>
+                </a>
+                <a href="#contact" @click="mobileMenuOpen = false"
+                    class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800 text-slate-200 hover:border-brand-teal/40">
+                    <i class="fa-solid fa-envelope text-brand-teal"></i>
+                    <span class="text-xs font-bold">تماس با ما</span>
+                </a>
+            </div>
+
+            <div class="pt-2">
+                <button onclick="handleConsultationClick()"
+                    class="btn-gradient w-full text-brand-dark font-black py-3.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg">
+                    <i class="fa-solid fa-phone-volume"></i>
+                    <span>ثبت درخواست مشاوره رایگان</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 5. Search & Fast Jump Modal (Ctrl+K) -->
+        <div x-show="searchModalOpen" x-keydown.window.escape="searchModalOpen = false"
+            x-keydown.window.ctrl.k.prevent="searchModalOpen = true"
+            class="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-black/80 backdrop-blur-md"
+            style="display: none;">
+            <div @click.away="searchModalOpen = false"
+                class="w-full max-w-xl glass-card rounded-3xl p-6 border-brand-teal/40 shadow-2xl space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <div class="flex items-center gap-3 w-full">
+                        <i class="fa-solid fa-magnifying-glass text-brand-teal text-lg"></i>
+                        <input type="text" placeholder="به کدام بخش می‌خواهید بروید؟ (تایپ کنید...)"
+                            class="w-full bg-transparent text-sm text-white focus:outline-none" autofocus>
+                    </div>
+                    <button @click="searchModalOpen = false" class="text-slate-400 hover:text-white"><i
+                            class="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <p class="text-[11px] text-slate-400 font-semibold">میانبرهای سریع:</p>
+                <div class="space-y-2">
+                    <a href="#portfolio" @click="searchModalOpen = false"
+                        class="flex items-center justify-between p-3 rounded-xl bg-slate-900/80 hover:bg-brand-teal/10 hover:border-brand-teal/40 border border-slate-800 transition-all text-xs">
+                        <span class="font-bold text-slate-200"><i
+                                class="fa-solid fa-briefcase text-brand-teal ml-2"></i> نمونه‌کارهای اجرا شده</span>
+                        <i class="fa-solid fa-arrow-left text-slate-500"></i>
+                    </a>
+                    <a href="#services" @click="searchModalOpen = false"
+                        class="flex items-center justify-between p-3 rounded-xl bg-slate-900/80 hover:bg-brand-teal/10 hover:border-brand-teal/40 border border-slate-800 transition-all text-xs">
+                        <span class="font-bold text-slate-200"><i
+                                class="fa-solid fa-layer-group text-brand-teal ml-2"></i> لیست خدمات و تخصص‌ها</span>
+                        <i class="fa-solid fa-arrow-left text-slate-500"></i>
+                    </a>
+                    <a href="#contact" @click="searchModalOpen = false"
+                        class="flex items-center justify-between p-3 rounded-xl bg-slate-900/80 hover:bg-brand-teal/10 hover:border-brand-teal/40 border border-slate-800 transition-all text-xs">
+                        <span class="font-bold text-slate-200"><i class="fa-solid fa-envelope text-brand-teal ml-2"></i>
+                            فرم سریع تماس با ما</span>
+                        <i class="fa-solid fa-arrow-left text-slate-500"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== MAIN PORTFOLIO CONTENT ==================== -->
+    <!-- 
+        از Alpine.js برای فیلتر کردن هوشمند نمونه‌کارها (All, Web Applications, Gaming, Platforms)
+        و قابلیت لایک/ترغیب تعاملی استفاده شده است.
+    -->
+    <main x-data="{ activeFilter: 'all' }"
+        class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 flex-1">
+
+        <!-- Header Hero Section -->
+        <section class="text-center max-w-4xl mx-auto space-y-6">
+            <!-- Dynamic Floating Badge -->
+            <div
+                class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-teal/10 border border-brand-teal/30 text-brand-teal text-xs font-extrabold backdrop-blur-md animate-float-badge">
+                <span class="w-2 h-2 rounded-full bg-brand-teal animate-ping"></span>
+                <span>ویترین افتخارات و پروژه‌های اجرا شده</span>
+            </div>
+
+            <!-- Main Heading with Gradient -->
+            <h1 class="text-3xl sm:text-5xl md:text-6xl font-black text-slate-100 leading-tight">
+                خلاقیت در کدنویسی، <br class="hidden sm:inline" />
+                <span class="text-gradient">قدرت در اجرای پروژه‌ها</span>
+            </h1>
+
+            <!-- Engaging Description -->
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed font-medium max-w-2xl mx-auto">
+                هر پروژه در Apexo قصه‌ای از ترکیب سرعت بالا، طراحی مدرن و تجربه کاربری بی‌نقص است. پروژه‌های زیر را
+                بررسی کنید و با کلیک روی هر کدام، وارد نسخه زنده آن شوید!
+            </p>
+
+            <!-- Filter Categories (دکمه‌های فیلتر نمونه کارها) -->
+            <div class="flex flex-wrap items-center justify-center gap-2.5 pt-4">
+                <button @click="activeFilter = 'all'"
+                    :class="activeFilter === 'all' ? 'bg-gradient-to-r from-brand-teal to-brand-cyan text-brand-dark shadow-lg shadow-brand-teal/20 font-black' : 'glass-card text-slate-300 hover:text-brand-teal font-bold'"
+                    class="px-5 py-2.5 rounded-xl text-xs sm:text-sm transition-all duration-300 flex items-center gap-2">
+                    <i class="fa-solid fa-border-all"></i>
+                    <span>همه پروژه‌ها</span>
+                </button>
+
+                <button @click="activeFilter = 'platform'"
+                    :class="activeFilter === 'platform' ? 'bg-gradient-to-r from-brand-teal to-brand-cyan text-brand-dark shadow-lg shadow-brand-teal/20 font-black' : 'glass-card text-slate-300 hover:text-brand-teal font-bold'"
+                    class="px-5 py-2.5 rounded-xl text-xs sm:text-sm transition-all duration-300 flex items-center gap-2">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span>سامانه‌های کاریابی و شرکتی</span>
+                </button>
+
+                <button @click="activeFilter = 'gaming'"
+                    :class="activeFilter === 'gaming' ? 'bg-gradient-to-r from-brand-teal to-brand-cyan text-brand-dark shadow-lg shadow-brand-teal/20 font-black' : 'glass-card text-slate-300 hover:text-brand-teal font-bold'"
+                    class="px-5 py-2.5 rounded-xl text-xs sm:text-sm transition-all duration-300 flex items-center gap-2">
+                    <i class="fa-solid fa-gamepad"></i>
+                    <span>گیمینگ و وب‌اپلیکیشن</span>
+                </button>
+
+                <button @click="activeFilter = 'automotive'"
+                    :class="activeFilter === 'automotive' ? 'bg-gradient-to-r from-brand-teal to-brand-cyan text-brand-dark shadow-lg shadow-brand-teal/20 font-black' : 'glass-card text-slate-300 hover:text-brand-teal font-bold'"
+                    class="px-5 py-2.5 rounded-xl text-xs sm:text-sm transition-all duration-300 flex items-center gap-2">
+                    <i class="fa-solid fa-car"></i>
+                    <span>فروشگاهی و خودرو</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ==================== PORTFOLIO GRID ==================== -->
+        <section class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- 
+                PROJECT CARD 1: کار یار (KarYar)
+                توضیحات: پلتفرم هوشمند کاریابی و استخدام با Tailwind CSS, Alpine.js, AOS و Three.js
+            -->
+            <article x-show="activeFilter === 'all' || activeFilter === 'platform'"
+                x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95"
+                x-transition:enter-end="opacity-100 scale-100"
+                class="portfolio-card glass-card rounded-3xl overflow-hidden flex flex-col justify-between group relative border-brand-teal/20">
+
+                <!-- Card Header Image & Overlay -->
+                <div class="relative overflow-hidden aspect-video portfolio-image-container bg-slate-900">
+                    <!-- Placeholder/Actual Image -->
+                    <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80"
+                        alt="پلتفرم کاریابی کار یار" class="w-full h-full object-cover">
+
+                    <!-- Gradient Hover Overlay -->
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity">
+                    </div>
+
+                    <!-- Category Badge -->
+                    <div class="absolute top-4 right-4 z-10">
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-950/80 border border-brand-teal/40 text-brand-teal text-[11px] font-bold backdrop-blur-md flex items-center gap-1.5">
+                            <i class="fa-solid fa-user-tie"></i>
+                            سامانه کاریابی
+                        </span>
+                    </div>
+
+                    <!-- Live Demo Icon Trigger -->
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-10">
+                        <a href="https://karyar-demo.com" target="_blank" rel="noopener noreferrer"
+                            class="w-14 h-14 rounded-2xl btn-gradient flex items-center justify-center text-brand-dark text-xl shadow-2xl transform scale-75 group-hover:scale-100 transition-transform">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card Body -->
+                <div class="p-6 space-y-4 flex-1 flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-xl font-black text-slate-100 group-hover:text-brand-teal transition-colors">
+                                پلتفرم جامع کاریابی «کار یار»
+                            </h3>
+                            <span class="text-xs font-mono text-slate-400"><i
+                                    class="fa-solid fa-star text-amber-400 ml-1"></i>4.9</span>
+                        </div>
+
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-light line-clamp-3">
+                            سامانه پیشرفته ثبت‌نام کارجویان و کارفرمایان شامل داشبورد اختصاصی، پنل مدیریت آگهی‌های شغلی،
+                            بخش وبلاگ تحلیلی و افکت‌های سه‌بعدی تعاملی.
+                        </p>
+                    </div>
+
+                    <!-- Tech Stack Badges -->
+                    <div class="pt-3 border-t border-slate-800/80 space-y-3">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-[10px] font-mono text-slate-400">Tailwind
+                                CSS</span>
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-[10px] font-mono text-slate-400">Alpine.js</span>
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-[10px] font-mono text-slate-400">Three.js</span>
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-[10px] font-mono text-slate-400">SweetAlert2</span>
+                        </div>
+
+                        <!-- Action Button -->
+                        <a href="https://karyar-demo.com" target="_blank" rel="noopener noreferrer"
+                            class="w-full py-3 rounded-xl bg-slate-900/90 hover:bg-brand-teal/10 border border-slate-800 hover:border-brand-teal/50 text-slate-200 hover:text-brand-teal text-xs font-bold transition-all flex items-center justify-center gap-2 group/btn">
+                            <span>مشاهده انلاین و آنلاین پروژه</span>
+                            <i
+                                class="fa-solid fa-arrow-left text-[10px] group-hover/btn:-translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 
+                PROJECT CARD 2: GameMarket.gg Inspired Platform
+                توضیحات: مارکت‌پلیس اکانت‌های گیمینگ با تم تاریک، Alpine.js و Tailwind CSS
+            -->
+            <article x-show="activeFilter === 'all' || activeFilter === 'gaming'"
+                x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95"
+                x-transition:enter-end="opacity-100 scale-100"
+                class="portfolio-card glass-card rounded-3xl overflow-hidden flex flex-col justify-between group relative border-brand-teal/20">
+
+                <!-- Card Header Image & Overlay -->
+                <div class="relative overflow-hidden aspect-video portfolio-image-container bg-slate-900">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80"
+                        alt="مارکت‌پلیس گیمینگ GameMarket" class="w-full h-full object-cover">
+
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity">
+                    </div>
+
+                    <div class="absolute top-4 right-4 z-10">
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-950/80 border border-brand-cyan/40 text-brand-cyan text-[11px] font-bold backdrop-blur-md flex items-center gap-1.5">
+                            <i class="fa-solid fa-gamepad"></i>
+                            گیمینگ مارکت
+                        </span>
+                    </div>
+
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-10">
+                        <a href="https://gamemarket-demo.com" target="_blank" rel="noopener noreferrer"
+                            class="w-14 h-14 rounded-2xl btn-gradient flex items-center justify-center text-brand-dark text-xl shadow-2xl transform scale-75 group-hover:scale-100 transition-transform">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card Body -->
+                <div class="p-6 space-y-4 flex-1 flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-xl font-black text-slate-100 group-hover:text-brand-cyan transition-colors">
+                                مارکت‌پلیس اکانت «گیم مارکت»
+                            </h3>
+                            <span class="text-xs font-mono text-slate-400"><i
+                                    class="fa-solid fa-star text-amber-400 ml-1"></i>5.0</span>
+                        </div>
+
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-light line-clamp-3">
+                            پلتفرم معامله اکانت‌های بازی با تم تاریک مدرن، نوار مسیریابی شفاف، فیلترهای پیشرفته دسته
+                            بندی گیم‌ها و لیستینگ‌های فوق سریع.
+                        </p>
+                    </div>
+
+                    <!-- Tech Stack Badges -->
+                    <div class="pt-3 border-t border-slate-800/80 space-y-3">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-[10px] font-mono text-slate-400">Tailwind
+                                CSS</span>
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-[10px] font-mono text-slate-400">Alpine.js</span>
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-[10px] font-mono text-slate-400">Dark
+                                Theme UI</span>
+                        </div>
+
+                        <a href="https://gamemarket-demo.com" target="_blank" rel="noopener noreferrer"
+                            class="w-full py-3 rounded-xl bg-slate-900/90 hover:bg-brand-cyan/10 border border-slate-800 hover:border-brand-cyan/50 text-slate-200 hover:text-brand-cyan text-xs font-bold transition-all flex items-center justify-center gap-2 group/btn">
+                            <span>مشاهده آنلاین و زنده سایت</span>
+                            <i
+                                class="fa-solid fa-arrow-left text-[10px] group-hover/btn:-translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 
+                PROJECT CARD 3: ماشین سرا (Mashin Sara)
+                توضیحات: وب‌سایت جامع خرید و فروش و نمایشگاه آنلاین خودرو
+            -->
+            <article x-show="activeFilter === 'all' || activeFilter === 'automotive'"
+                x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95"
+                x-transition:enter-end="opacity-100 scale-100"
+                class="portfolio-card glass-card rounded-3xl overflow-hidden flex flex-col justify-between group relative border-brand-teal/20">
+
+                <!-- Card Header Image & Overlay -->
+                <div class="relative overflow-hidden aspect-video portfolio-image-container bg-slate-900">
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80"
+                        alt="نمایشگاه آنلاین خودرو ماشین سرا" class="w-full h-full object-cover">
+
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity">
+                    </div>
+
+                    <div class="absolute top-4 right-4 z-10">
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-950/80 border border-brand-teal/40 text-brand-teal text-[11px] font-bold backdrop-blur-md flex items-center gap-1.5">
+                            <i class="fa-solid fa-car"></i>
+                            نمایشگاه خودرو
+                        </span>
+                    </div>
+
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-10">
+                        <a href="https://mashinsara-demo.com" target="_blank" rel="noopener noreferrer"
+                            class="w-14 h-14 rounded-2xl btn-gradient flex items-center justify-center text-brand-dark text-xl shadow-2xl transform scale-75 group-hover:scale-100 transition-transform">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card Body -->
+                <div class="p-6 space-y-4 flex-1 flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-xl font-black text-slate-100 group-hover:text-brand-teal transition-colors">
+                                سامانه تخصصی «ماشین سرا»
+                            </h3>
+                            <span class="text-xs font-mono text-slate-400"><i
+                                    class="fa-solid fa-star text-amber-400 ml-1"></i>4.8</span>
+                        </div>
+
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-light line-clamp-3">
+                            وب‌سایت تخصصی آگهی‌های خودرو، دارای مودال‌های ثبت‌نام روان، فرم‌های تماس سریع، مسیردهی پویا
+                            محصولات و لیست‌بندی خودروهای لوکس.
+                        </p>
+                    </div>
+
+                    <!-- Tech Stack Badges -->
+                    <div class="pt-3 border-t border-slate-800/80 space-y-3">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-[10px] font-mono text-slate-400">HTML5
+                                / CSS3</span>
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-[10px] font-mono text-slate-400">JavaScript
+                                ES6</span>
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-[10px] font-mono text-slate-400">Bootstrap
+                                5</span>
+                        </div>
+
+                        <a href="https://mashinsara-demo.com" target="_blank" rel="noopener noreferrer"
+                            class="w-full py-3 rounded-xl bg-slate-900/90 hover:bg-brand-teal/10 border border-slate-800 hover:border-brand-teal/50 text-slate-200 hover:text-brand-teal text-xs font-bold transition-all flex items-center justify-center gap-2 group/btn">
+                            <span>مشاهده آنلاین و زنده سایت</span>
+                            <i
+                                class="fa-solid fa-arrow-left text-[10px] group-hover/btn:-translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 
+                PROJECT CARD 4: بازی تعاملی مار (Interactive Snake Shooter)
+                توضیحات: بازی مرورگری با قابلیت شلیک لیزر، ارتقای فروشگاه و تم نئون
+            -->
+            <article x-show="activeFilter === 'all' || activeFilter === 'gaming'"
+                x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95"
+                x-transition:enter-end="opacity-100 scale-100"
+                class="portfolio-card glass-card rounded-3xl overflow-hidden flex flex-col justify-between group relative border-brand-teal/20">
+
+                <!-- Card Header Image & Overlay -->
+                <div class="relative overflow-hidden aspect-video portfolio-image-container bg-slate-900">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80"
+                        alt="بازی وب آنلاین Snake Shooter" class="w-full h-full object-cover">
+
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity">
+                    </div>
+
+                    <div class="absolute top-4 right-4 z-10">
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-950/80 border border-brand-cyan/40 text-brand-cyan text-[11px] font-bold backdrop-blur-md flex items-center gap-1.5">
+                            <i class="fa-solid fa-[#00F5D4] fa-wand-magic-sparkles"></i>
+                            بازی مرورگری JS
+                        </span>
+                    </div>
+
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-10">
+                        <a href="https://snake-game-demo.com" target="_blank" rel="noopener noreferrer"
+                            class="w-14 h-14 rounded-2xl btn-gradient flex items-center justify-center text-brand-dark text-xl shadow-2xl transform scale-75 group-hover:scale-100 transition-transform">
+                            <i class="fa-solid fa-gamepad"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card Body -->
+                <div class="p-6 space-y-4 flex-1 flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-xl font-black text-slate-100 group-hover:text-brand-cyan transition-colors">
+                                بازی تعاملی «Snake Laser»
+                            </h3>
+                            <span class="text-xs font-mono text-slate-400"><i
+                                    class="fa-solid fa-star text-amber-400 ml-1"></i>5.0</span>
+                        </div>
+
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-light line-clamp-3">
+                            بازی مدرن مرورگر مجهز به سلاح‌های لیزری، فروشگاه ارتقا با سکه، افکت‌های صوتی نئون و پشتیبانی
+                            کامل از کنترل لمسی موبایل.
+                        </p>
+                    </div>
+
+                    <!-- Tech Stack Badges -->
+                    <div class="pt-3 border-t border-slate-800/80 space-y-3">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-[10px] font-mono text-slate-400">Vanilla
+                                JS</span>
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-[10px] font-mono text-slate-400">HTML5
+                                Canvas</span>
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-[10px] font-mono text-slate-400">Web
+                                Audio API</span>
+                        </div>
+
+                        <a href="https://snake-game-demo.com" target="_blank" rel="noopener noreferrer"
+                            class="w-full py-3 rounded-xl bg-slate-900/90 hover:bg-brand-cyan/10 border border-slate-800 hover:border-brand-cyan/50 text-slate-200 hover:text-brand-cyan text-xs font-bold transition-all flex items-center justify-center gap-2 group/btn">
+                            <span>اجرا و تجربه انلاین بازی</span>
+                            <i
+                                class="fa-solid fa-play text-[10px] group-hover/btn:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 
+                PROJECT CARD 5: هوش مصنوعی و تحلیل داده (AI Analytics Dashboard)
+            -->
+            <article x-show="activeFilter === 'all' || activeFilter === 'platform'"
+                x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95"
+                x-transition:enter-end="opacity-100 scale-100"
+                class="portfolio-card glass-card rounded-3xl overflow-hidden flex flex-col justify-between group relative border-brand-teal/20">
+
+                <!-- Card Header Image & Overlay -->
+                <div class="relative overflow-hidden aspect-video portfolio-image-container bg-slate-900">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
+                        alt="داشبورد هوش مصنوعی Apexo" class="w-full h-full object-cover">
+
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity">
+                    </div>
+
+                    <div class="absolute top-4 right-4 z-10">
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-950/80 border border-brand-teal/40 text-brand-teal text-[11px] font-bold backdrop-blur-md flex items-center gap-1.5">
+                            <i class="fa-solid fa-brain"></i>
+                            هوش مصنوعی & داده
+                        </span>
+                    </div>
+
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-10">
+                        <a href="https://ai-dashboard-demo.com" target="_blank" rel="noopener noreferrer"
+                            class="w-14 h-14 rounded-2xl btn-gradient flex items-center justify-center text-brand-dark text-xl shadow-2xl transform scale-75 group-hover:scale-100 transition-transform">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card Body -->
+                <div class="p-6 space-y-4 flex-1 flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-xl font-black text-slate-100 group-hover:text-brand-teal transition-colors">
+                                پنل تحلیلی «Apexo AI»
+                            </h3>
+                            <span class="text-xs font-mono text-slate-400"><i
+                                    class="fa-solid fa-star text-amber-400 ml-1"></i>4.9</span>
+                        </div>
+
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-light line-clamp-3">
+                            داشبورد آنالیز رفتار کاربران، پیش‌بینی الگوی فروش بر پایه یادگیری ماشین و نمایش نمودارهای
+                            تعاملی زمان‌واقعی.
+                        </p>
+                    </div>
+
+                    <!-- Tech Stack Badges -->
+                    <div class="pt-3 border-t border-slate-800/80 space-y-3">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-[10px] font-mono text-slate-400">Python
+                                / Django</span>
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-[10px] font-mono text-slate-400">Chart.js</span>
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-[10px] font-mono text-slate-400">Machine
+                                Learning</span>
+                        </div>
+
+                        <a href="https://ai-dashboard-demo.com" target="_blank" rel="noopener noreferrer"
+                            class="w-full py-3 rounded-xl bg-slate-900/90 hover:bg-brand-teal/10 border border-slate-800 hover:border-brand-teal/50 text-slate-200 hover:text-brand-teal text-xs font-bold transition-all flex items-center justify-center gap-2 group/btn">
+                            <span>مشاهده آنلاین و زنده سایت</span>
+                            <i
+                                class="fa-solid fa-arrow-left text-[10px] group-hover/btn:-translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 
+                PROJECT CARD 6: فروشگاه آنلاین مدرن (Apexo Commerce)
+            -->
+            <article x-show="activeFilter === 'all' || activeFilter === 'automotive'"
+                x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95"
+                x-transition:enter-end="opacity-100 scale-100"
+                class="portfolio-card glass-card rounded-3xl overflow-hidden flex flex-col justify-between group relative border-brand-teal/20">
+
+                <!-- Card Header Image & Overlay -->
+                <div class="relative overflow-hidden aspect-video portfolio-image-container bg-slate-900">
+                    <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=800&q=80"
+                        alt="فروشگاه اختصاصی Apexo Commerce" class="w-full h-full object-cover">
+
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity">
+                    </div>
+
+                    <div class="absolute top-4 right-4 z-10">
+                        <span
+                            class="px-3 py-1 rounded-full bg-slate-950/80 border border-brand-cyan/40 text-brand-cyan text-[11px] font-bold backdrop-blur-md flex items-center gap-1.5">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                            فروشگاه اختصاصی
+                        </span>
+                    </div>
+
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-10">
+                        <a href="https://commerce-demo.com" target="_blank" rel="noopener noreferrer"
+                            class="w-14 h-14 rounded-2xl btn-gradient flex items-center justify-center text-brand-dark text-xl shadow-2xl transform scale-75 group-hover:scale-100 transition-transform">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card Body -->
+                <div class="p-6 space-y-4 flex-1 flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-xl font-black text-slate-100 group-hover:text-brand-cyan transition-colors">
+                                وب‌سایت «Apexo Commerce»
+                            </h3>
+                            <span class="text-xs font-mono text-slate-400"><i
+                                    class="fa-solid fa-star text-amber-400 ml-1"></i>5.0</span>
+                        </div>
+
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-light line-clamp-3">
+                            فروشگاه آنلاین با قابلیت خرید آنی، فیلتر آنی محصولات بدون ریلود صفحه، سبد خرید پیشرفته و
+                            بهینه‌سازی شده برای حداکثر فروش.
+                        </p>
+                    </div>
+
+                    <!-- Tech Stack Badges -->
+                    <div class="pt-3 border-t border-slate-800/80 space-y-3">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-[10px] font-mono text-slate-400">Tailwind
+                                CSS</span>
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-[10px] font-mono text-slate-400">Choices.js</span>
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-[10px] font-mono text-slate-400">REST
+                                API</span>
+                        </div>
+
+                        <a href="https://commerce-demo.com" target="_blank" rel="noopener noreferrer"
+                            class="w-full py-3 rounded-xl bg-slate-900/90 hover:bg-brand-cyan/10 border border-slate-800 hover:border-brand-cyan/50 text-slate-200 hover:text-brand-cyan text-xs font-bold transition-all flex items-center justify-center gap-2 group/btn">
+                            <span>مشاهده آنلاین و زنده سایت</span>
+                            <i
+                                class="fa-solid fa-arrow-left text-[10px] group-hover/btn:-translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- ==================== CALL TO ACTION SECTION ==================== -->
+        <!-- بخش ترغیب کاربر برای ثبت سفارش و همکاری -->
+        <section class="mt-24 relative">
+            <div
+                class="glass-card p-8 sm:p-14 rounded-3xl text-center space-y-8 border border-brand-teal/30 relative overflow-hidden shadow-2xl">
+                <!-- Inner Light Glow -->
+                <div
+                    class="absolute inset-0 bg-gradient-to-r from-brand-teal/10 via-transparent to-brand-cyan/10 pointer-events-none">
+                </div>
+
+                <div
+                    class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-brand-teal/20 text-brand-teal text-3xl mb-2 shadow-lg shadow-brand-teal/10">
+                    <i class="fa-solid fa-rocket animate-bounce"></i>
+                </div>
+
+                <div class="space-y-3 max-w-2xl mx-auto">
+                    <h2 class="text-2xl sm:text-4xl font-black text-slate-100">
+                        آماده‌اید پروژه بعدی شما، <br class="hidden sm:inline" />
+                        <span class="text-gradient">شاهکار بعدی ما باشد؟</span>
+                    </h2>
+                    <p class="text-slate-300 text-xs sm:text-base font-medium leading-relaxed">
+                        تیم Apexo آماده است تا ایده‌های شما را با بالاترین کیفیت، سرعت خیره‌کننده و کدنویسی استاندارد به
+                        یک وب‌سایت پول‌ساز تبدیل کند.
+                    </p>
+                </div>
+
+                <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="index.html#contact"
+                        class="btn-gradient w-full sm:w-auto text-brand-dark font-black px-9 py-4 rounded-2xl text-sm shadow-xl flex items-center justify-center gap-3 group">
+                        <i
+                            class="fa-solid fa-paper-plane group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform"></i>
+                        <span>سفارش پروژه و مشاوره رایگان</span>
+                    </a>
+
+                    <a href="servise.html"
+                        class="glass-card hover:bg-slate-800/60 w-full sm:w-auto text-slate-200 font-bold px-8 py-4 rounded-2xl text-sm transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-layer-group text-brand-teal"></i>
+                        <span>بررسی خدمات و تخصص‌ها</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="relative z-10 py-8 text-center text-xs text-slate-500 border-t border-slate-800 glass-nav">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <div
+                    class="w-6 h-6 rounded-lg bg-gradient-to-tr from-brand-teal to-brand-cyan flex items-center justify-center text-brand-dark font-black text-xs">
+                    A
+                </div>
+                <span class="text-sm font-bold text-slate-300">Apexo Portfolio &copy; 2026</span>
+            </div>
+
+            <p>© ۲۰۲۶ تمامی حقوق محفوظ است. طراحی شده با عشق و کدنویسی تمیز در <strong
+                    class="text-slate-300">Apexo</strong>.</p>
+
+            <div class="flex gap-4 text-slate-400 text-sm">
+                <a href="#" class="hover:text-brand-teal transition-colors"><i class="fa-brands fa-github"></i></a>
+                <a href="#" class="hover:text-brand-teal transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#" class="hover:text-brand-teal transition-colors"><i class="fa-brands fa-telegram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS Helper for Language Switching Mock -->
+    <script>
+        function changeLanguage(lang) {
+            const currentLangText = document.getElementById('current-lang-text');
+            const checkFa = document.getElementById('check-fa');
+            const checkEn = document.getElementById('check-en');
+
+            if (lang === 'fa') {
+                if (currentLangText) currentLangText.textContent = 'فارسی';
+                if (checkFa) checkFa.classList.remove('hidden');
+                if (checkEn) checkEn.classList.add('hidden');
+                document.documentElement.dir = 'rtl';
+                document.documentElement.lang = 'fa';
+            } else {
+                if (currentLangText) currentLangText.textContent = 'English';
+                if (checkFa) checkFa.classList.add('hidden');
+                if (checkEn) checkEn.classList.remove('hidden');
+                document.documentElement.dir = 'ltr';
+                document.documentElement.lang = 'en';
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apexo | خلق وب‌سایت‌های اختصاصی و فوق‌پول‌ساز</title>
-
+    <link rel="shortcut icon" href="./img/photo_5796248624873279473_y.jpg" type="image/x-icon">
     <!-- SEO Meta Tags -->
     <meta name="description"
         content="Apexo - طراحی وب‌سایت‌های اختصاصی، فوق‌العاده سریع و مدرن. کسب‌وکار شما را به برترین برند حوزه خودتان تبدیل می‌کنیم.">
@@ -37,7 +37,7 @@
 
     <style>
         body {
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'Vazirmatn';
             background-color: #050B10;
             color: #F1F5F9;
             overflow-x: hidden;
@@ -140,7 +140,7 @@
                 <a href="#home" class="flex items-center gap-3 group">
                     <div
                         class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-teal to-brand-cyan flex items-center justify-center text-brand-dark font-black text-xl shadow-lg shadow-brand-teal/20 group-hover:scale-105 transition-transform">
-                        A
+                        <img src="./img/photo_5796248624873279473_y.jpg" class="rounded-full" alt="">
                     </div>
                     <span class="text-2xl font-black tracking-wider text-slate-100">Apexo<span
                             class="text-brand-teal">.</span></span>
@@ -152,24 +152,24 @@
                         <i class="fa-solid fa-house text-xs text-brand-teal"></i>
                         <span>خانه</span>
                     </a>
-                    <a href="#about" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                    <a href="./about.html" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
                         <i class="fa-solid fa-users text-xs text-brand-teal"></i>
                         <span>درباره ما</span>
                     </a>
-                    <a href="#portfolio" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                    <a href="./portfolio.html" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
                         <i class="fa-solid fa-briefcase text-xs text-brand-teal"></i>
                         <span>نمونه کارها</span>
                     </a>
-                    <a href="#services" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                    <a href="./servise.html "class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
                         <i class="fa-solid fa-layer-group text-xs text-brand-teal"></i>
                         <span>خدمات و تخصص‌ها</span>
                     </a>
-                    <a href="#testimonials"
+                    <a href="./testimonials.html"
                         class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
                         <i class="fa-solid fa-comments text-xs text-brand-teal"></i>
                         <span>نظرات</span>
                     </a>
-                    <a href="#contact" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                    <a href="#contact" onclick="fireSwal()" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
                         <i class="fa-solid fa-envelope text-xs text-brand-teal"></i>
                         <span>تماس با ما</span>
                     </a>
@@ -243,22 +243,22 @@
                     <i class="fa-solid fa-house text-brand-teal"></i>
                     <span class="text-xs font-bold">خانه</span>
                 </a>
-                <a href="#about" @click="mobileMenuOpen = false"
+                <a href="./about.html" @click="mobileMenuOpen = false"
                     class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800 text-slate-200 hover:border-brand-teal/40">
                     <i class="fa-solid fa-users text-brand-teal"></i>
                     <span class="text-xs font-bold">درباره ما</span>
                 </a>
-                <a href="#portfolio" @click="mobileMenuOpen = false"
+                <a href="./portfolio.html" @click="mobileMenuOpen = false"
                     class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800 text-slate-200 hover:border-brand-teal/40">
                     <i class="fa-solid fa-briefcase text-brand-teal"></i>
                     <span class="text-xs font-bold">نمونه کارها</span>
                 </a>
-                <a href="#services" @click="mobileMenuOpen = false"
+                <a href="./servise.html" @click=""
                     class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800 text-slate-200 hover:border-brand-teal/40">
                     <i class="fa-solid fa-layer-group text-brand-teal"></i>
                     <span class="text-xs font-bold">خدمات و تخصص‌ها</span>
                 </a>
-                <a href="#testimonials" @click="mobileMenuOpen = false"
+                <a href="./testimonials.html" @click="mobileMenuOpen = false"
                     class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800 text-slate-200 hover:border-brand-teal/40">
                     <i class="fa-solid fa-comments text-brand-teal"></i>
                     <span class="text-xs font-bold">نظرات</span>
@@ -1132,6 +1132,23 @@
                     });
                 }
             });
+        }
+    
+        // fire swal
+        function fireSwal(){
+            Swal.fire({
+                title: '<span class="text-gradient font-black" style="font-family: Vazirmatn;"> برای مشاوره رایگان روی  دکمه مشاوره رایگان کلیک کنید</span>',
+                background: '#0D1923',
+                color: '#F1F5F9',
+                showCancelButton: true,
+                confirmButtonText: 'تایید',
+                cancelButtonText:'انصراف',
+                customClass: {
+                    popup: 'rounded-3xl border border-emerald-500/30 glass-card',
+                    confirmButton: 'bg-gradient-to-r from-emerald-400 to-cyan-400 text-slate-950 font-black px-6 py-3 rounded-xl border-0 shadow-lg',
+                    cancelButton: 'bg-slate-800 text-slate-300 px-6 py-3 rounded-xl border-0'
+                }
+            })
         }
     </script>
 </body>

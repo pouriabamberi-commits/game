@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظرات مشتریان و تجربیات همکاری | Apexo Testimonials</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="تجربیات واقعی مشتریان و کارفرمایان از همکاری با تیم Apexo در زمینه توسعه وب و رابط‌های کاربری">
+    <meta name="keywords" content="نظرات مشتریان, رضایت مشتری, طراحی سایت, Apexo, فرانت اند">
+    <meta name="robots" content="index, follow">
+
+    <!-- Fonts: Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Project Compiled CSS (Tailwind v4 Output) -->
+    <link rel="stylesheet" href="./styles/output.css">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Vazirmatn', var(--font-sans, sans-serif);
+            background-color: var(--color-brand-dark, #050B10);
+            color: var(--color-slate-100, #F1F5F9);
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism using project tokens */
+        .glass-card {
+            background: color-mix(in srgb, var(--color-brand-card, #0D1923) 75%, transparent);
+            backdrop-filter: blur(var(--blur-xl, 20px));
+            -webkit-backdrop-filter: blur(var(--blur-xl, 20px));
+            border: 1px solid color-mix(in srgb, var(--color-brand-teal, #00F5D4) 18%, transparent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .glass-card:hover {
+            border-color: color-mix(in srgb, var(--color-brand-teal, #00F5D4) 50%, transparent);
+            box-shadow: 0 15px 45px color-mix(in srgb, var(--color-brand-teal, #00F5D4) 22%, transparent);
+        }
+
+        .glass-nav {
+            background: color-mix(in srgb, var(--color-brand-dark, #050B10) 85%, transparent);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid color-mix(in srgb, var(--color-brand-teal, #00F5D4) 15%, transparent);
+        }
+
+        /* Glow and Gradient Utilities */
+        .text-gradient {
+            background: linear-gradient(135deg, var(--color-brand-teal, #00F5D4) 0%, var(--color-brand-cyan, #00D2FF) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-gradient {
+            background: linear-gradient(135deg, var(--color-brand-teal, #00F5D4) 0%, var(--color-brand-cyan, #00D2FF) 100%);
+            transition: all var(--default-transition-duration, 0.3s) var(--default-transition-timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+        }
+
+        .btn-gradient:hover {
+            box-shadow: 0 0 30px color-mix(in srgb, var(--color-brand-teal, #00F5D4) 60%, transparent);
+            transform: translateY(-2px);
+        }
+
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(140px);
+            z-index: 0;
+            opacity: 0.28;
+            pointer-events: none;
+        }
+
+        /* Animations */
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.6;
+                transform: scale(1.08);
+            }
+        }
+
+        @keyframes float-badge {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        .animate-pulse-glow {
+            animation: pulse-glow 4s ease-in-out infinite;
+        }
+
+        .animate-float-badge {
+            animation: float-badge 3s ease-in-out infinite;
+        }
+
+        .testimonial-card {
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-6px);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050B10;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #0D2830;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00F5D4;
+        }
+    </style>
+</head>
+
+<body
+    class="relative w-1/1 selection:bg-brand-teal selection:text-brand-dark min-h-screen flex flex-col justify-between overflow-x-hidden">
+
+    <!-- Ambient Glow Orbs -->
+    <div
+        class="glow-orb w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-brand-teal -top-20 -right-20 animate-pulse-glow">
+    </div>
+    <div class="glow-orb w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-brand-cyan top-[40%] -left-40 animate-pulse-glow"
+        style="animation-delay: 2s;"></div>
+    <div class="glow-orb w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-brand-accent bottom-0 right-0 animate-pulse-glow"
+        style="animation-delay: 1s;"></div>
+
+    <!-- ==================== HEADER ==================== -->
+    <header x-data="{ mobileMenuOpen: false, searchModalOpen: false }"
+        class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+
+                <!-- 1. Logo -->
+                <a href="#home" class="flex items-center gap-3 group">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-teal to-brand-cyan flex items-center justify-center text-brand-dark font-black text-xl shadow-lg shadow-brand-teal/20 group-hover:scale-105 transition-transform">
+                        <img src="./img/photo_5796248624873279473_y.jpg" class="rounded-full" alt="">
+                    </div>
+                    <span class="text-2xl font-black tracking-wider text-slate-100">Apexo<span
+                            class="text-brand-teal">.</span></span>
+                </a>
+
+                <!-- 2. Desktop Navigation (شامل هر ۶ بخش درخواست‌شده) -->
+                <nav class="hidden lg:flex items-center gap-6 text-sm font-bold text-slate-300">
+                    <a href="#home" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                        <i class="fa-solid fa-house text-xs text-brand-teal"></i>
+                        <span>خانه</span>
+                    </a>
+                    <a href="./about.html" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                        <i class="fa-solid fa-users text-xs text-brand-teal"></i>
+                        <span>درباره ما</span>
+                    </a>
+                    <a href="./portfolio.html" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                        <i class="fa-solid fa-briefcase text-xs text-brand-teal"></i>
+                        <span>نمونه کارها</span>
+                    </a>
+                    <a href="./servise.html "class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                        <i class="fa-solid fa-layer-group text-xs text-brand-teal"></i>
+                        <span>خدمات و تخصص‌ها</span>
+                    </a>
+                    <a href="./testimonials.html"
+                        class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                        <i class="fa-solid fa-comments text-xs text-brand-teal"></i>
+                        <span>نظرات</span>
+                    </a>
+                    <a href="#contact" onclick="fireSwal()" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                        <i class="fa-solid fa-envelope text-xs text-brand-teal"></i>
+                        <span>تماس با ما</span>
+                    </a>
+
+                </nav>
+
+                <!-- Language Switcher Dropdown -->
+                <div class="relative inline-block text-right" x-data="{ open: false }">
+                    <!-- Main Toggle Button -->
+                    <button @click="open = !open" @click.outside="open = false" type="button"
+                        class="glass-card px-3 py-2 rounded-xl border border-brand-teal/20 text-slate-200 hover:text-brand-teal hover:border-brand-teal/50 transition-all flex items-center gap-2 text-xs font-bold active:scale-95">
+                        <i class="fa-solid fa-globe text-brand-teal text-sm"></i>
+                        <span id="current-lang-text">فارسی</span>
+                        <i class="fa-solid fa-chevron-down text-[10px] transition-transform duration-200"
+                            :class="open ? 'rotate-180' : ''"></i>
+                    </button>
+
+                    <!-- Dropdown Menu (دستور style حذف شد و x-cloak اضافه شد) -->
+                    <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-150"
+                        x-transition:enter-start="opacity-0 scale-95 -translate-y-2"
+                        x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+                        x-transition:leave="transition ease-in duration-100"
+                        x-transition:leave-start="opacity-100 scale-100 translate-y-0"
+                        x-transition:leave-end="opacity-0 scale-95 -translate-y-2"
+                        class="absolute left-0 mt-2 w-32 rounded-xl bg-slate-950/90 border border-slate-800 shadow-xl backdrop-blur-xl z-[60] overflow-hidden py-1.5">
+
+                        <!-- Persian Option -->
+                        <button type="button" onclick="changeLanguage('fa')" @click="open = false"
+                            class="w-full px-3 py-2 text-right text-xs font-medium text-slate-200 hover:bg-brand-teal/10 hover:text-brand-teal flex items-center justify-between transition-colors">
+                            <span class="flex items-center gap-2">🇮🇷 فارسی</span>
+                            <i id="check-fa" class="fa-solid fa-check text-brand-teal text-xs"></i>
+                        </button>
+
+                        <div class="border-t border-slate-800/80 my-1"></div>
+
+                        <!-- English Option -->
+                        <button type="button" onclick="changeLanguage('en')" @click="open = false"
+                            class="w-full px-3 py-2 text-right text-xs font-medium text-slate-200 hover:bg-brand-teal/10 hover:text-brand-teal flex items-center justify-between transition-colors">
+                            <span class="flex items-center gap-2">🇬🇧 English</span>
+                            <i id="check-en" class="fa-solid fa-check text-brand-teal text-xs hidden"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- 3. Fast Actions (دسترسی سریع و دکمه‌های اکشن) -->
+                <div class="flex items-center gap-3">
+
+
+                    <!-- Desktop Call CTA -->
+                    <button onclick="handleConsultationClick()"
+                        class="hidden sm:flex btn-gradient text-brand-dark font-black px-5 py-2.5 rounded-xl text-xs shadow-md items-center gap-2">
+                        <i class="fa-solid fa-headset"></i>
+                        <span>مشاوره سریع</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Mobile Thumb-Friendly Fullscreen Menu (منوی بهینه موبایل) -->
+        <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0"
+            x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0"
+            x-transition:leave-end="opacity-0 -translate-y-4"
+            class="lg:hidden glass-nav border-t border-brand-teal/20 px-6 py-6 space-y-4 max-h-[85vh] overflow-y-auto"
+            style="display: none;">
+
+            <p class="text-[11px] font-bold text-brand-teal uppercase tracking-widest">دسترسی مستقیم به صفحات</p>
+
+            <div class="grid grid-cols-2 gap-2.5">
+                <a href="#home" @click="mobileMenuOpen = false"
+                    class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800 text-slate-200 hover:border-brand-teal/40">
+                    <i class="fa-solid fa-house text-brand-teal"></i>
+                    <span class="text-xs font-bold">خانه</span>
+                </a>
+                <a href="./about.html" @click="mobileMenuOpen = false"
+                    class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800 text-slate-200 hover:border-brand-teal/40">
+                    <i class="fa-solid fa-users text-brand-teal"></i>
+                    <span class="text-xs font-bold">درباره ما</span>
+                </a>
+                <a href="./portfolio.html" @click="mobileMenuOpen = false"
+                    class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800 text-slate-200 hover:border-brand-teal/40">
+                    <i class="fa-solid fa-briefcase text-brand-teal"></i>
+                    <span class="text-xs font-bold">نمونه کارها</span>
+                </a>
+                <a href="./servise.html" @click=""
+                    class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800 text-slate-200 hover:border-brand-teal/40">
+                    <i class="fa-solid fa-layer-group text-brand-teal"></i>
+                    <span class="text-xs font-bold">خدمات و تخصص‌ها</span>
+                </a>
+                <a href="./testimonials.html" @click="mobileMenuOpen = false"
+                    class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800 text-slate-200 hover:border-brand-teal/40">
+                    <i class="fa-solid fa-comments text-brand-teal"></i>
+                    <span class="text-xs font-bold">نظرات</span>
+                </a>
+                <a href="#contact" @click="mobileMenuOpen = false"
+                    class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800 text-slate-200 hover:border-brand-teal/40">
+                    <i class="fa-solid fa-envelope text-brand-teal"></i>
+                    <span class="text-xs font-bold">تماس با ما</span>
+                </a>
+            </div>
+
+            <div class="pt-2">
+                <button onclick="handleConsultationClick()"
+                    class="btn-gradient w-full text-brand-dark font-black py-3.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg">
+                    <i class="fa-solid fa-phone-volume"></i>
+                    <span>ثبت درخواست مشاوره رایگان</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 5. Search & Fast Jump Modal (Ctrl+K) -->
+        <div x-show="searchModalOpen" x-keydown.window.escape="searchModalOpen = false"
+            x-keydown.window.ctrl.k.prevent="searchModalOpen = true"
+            class="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-black/80 backdrop-blur-md"
+            style="display: none;">
+            <div @click.away="searchModalOpen = false"
+                class="w-full max-w-xl glass-card rounded-3xl p-6 border-brand-teal/40 shadow-2xl space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <div class="flex items-center gap-3 w-full">
+                        <i class="fa-solid fa-magnifying-glass text-brand-teal text-lg"></i>
+                        <input type="text" placeholder="به کدام بخش می‌خواهید بروید؟ (تایپ کنید...)"
+                            class="w-full bg-transparent text-sm text-white focus:outline-none" autofocus>
+                    </div>
+                    <button @click="searchModalOpen = false" class="text-slate-400 hover:text-white"><i
+                            class="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <p class="text-[11px] text-slate-400 font-semibold">میانبرهای سریع:</p>
+                <div class="space-y-2">
+                    <a href="#portfolio" @click="searchModalOpen = false"
+                        class="flex items-center justify-between p-3 rounded-xl bg-slate-900/80 hover:bg-brand-teal/10 hover:border-brand-teal/40 border border-slate-800 transition-all text-xs">
+                        <span class="font-bold text-slate-200"><i
+                                class="fa-solid fa-briefcase text-brand-teal ml-2"></i> نمونه‌کارهای اجرا شده</span>
+                        <i class="fa-solid fa-arrow-left text-slate-500"></i>
+                    </a>
+                    <a href="#services" @click="searchModalOpen = false"
+                        class="flex items-center justify-between p-3 rounded-xl bg-slate-900/80 hover:bg-brand-teal/10 hover:border-brand-teal/40 border border-slate-800 transition-all text-xs">
+                        <span class="font-bold text-slate-200"><i
+                                class="fa-solid fa-layer-group text-brand-teal ml-2"></i> لیست خدمات و تخصص‌ها</span>
+                        <i class="fa-solid fa-arrow-left text-slate-500"></i>
+                    </a>
+                    <a href="#contact" @click="searchModalOpen = false"
+                        class="flex items-center justify-between p-3 rounded-xl bg-slate-900/80 hover:bg-brand-teal/10 hover:border-brand-teal/40 border border-slate-800 transition-all text-xs">
+                        <span class="font-bold text-slate-200"><i class="fa-solid fa-envelope text-brand-teal ml-2"></i>
+                            فرم سریع تماس با ما</span>
+                        <i class="fa-solid fa-arrow-left text-slate-500"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== MAIN TESTIMONIALS CONTENT ==================== -->
+    <main x-data="{ 
+            activeTab: 'all',
+            submitted: false,
+            newComment: { name: '', role: '', project: '', message: '', rating: '5' }
+        }" class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 flex-1">
+
+        <!-- Header Hero Section -->
+        <section class="text-center max-w-4xl mx-auto space-y-6">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-teal/10 border border-brand-teal/30 text-brand-teal text-xs font-extrabold backdrop-blur-md animate-float-badge">
+                <i class="fa-solid fa-quote-right text-sm"></i>
+                <span>صدای کارفرمایان و شرکای تجاری ما</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl md:text-6xl font-black text-slate-100 leading-tight">
+                اعتماد شما، <br class="hidden sm:inline" />
+                <span class="text-gradient">بزرگ‌ترین افتخار Apexo</span>
+            </h1>
+
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed font-medium max-w-2xl mx-auto">
+                کیفیت کار ما در لبخند رضایت مشتریانمان خلاصه‌تر می‌شود. نظرات و تجربیات کارفرمایانی که پروژه‌های خود را
+                به ما سپردند بخوانید.
+            </p>
+
+            <!-- Overall Stats Bar -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 max-w-3xl mx-auto">
+                <div class="glass-card p-4 rounded-2xl text-center">
+                    <div class="text-2xl sm:text-3xl font-black text-brand-teal">۹۹٪</div>
+                    <div class="text-[11px] font-bold text-slate-400 mt-1">رضایت کارفرمایان</div>
+                </div>
+                <div class="glass-card p-4 rounded-2xl text-center">
+                    <div class="text-2xl sm:text-3xl font-black text-brand-cyan">۴.۹ / ۵</div>
+                    <div class="text-[11px] font-bold text-slate-400 mt-1">میانگین امتیاز پروژه‌ها</div>
+                </div>
+                <div class="glass-card p-4 rounded-2xl text-center">
+                    <div class="text-2xl sm:text-3xl font-black text-brand-teal">۱۵+</div>
+                    <div class="text-[11px] font-bold text-slate-400 mt-1">پروژه موفق پیاده‌سازی شده</div>
+                </div>
+                <div class="glass-card p-4 rounded-2xl text-center">
+                    <div class="text-2xl sm:text-3xl font-black text-brand-cyan">۱۰۰٪</div>
+                    <div class="text-[11px] font-bold text-slate-400 mt-1">تحویل به موقع و آن‌تایم</div>
+                </div>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="flex flex-wrap items-center justify-center gap-2 pt-6">
+                <button @click="activeTab = 'all'"
+                    :class="activeTab === 'all' ? 'bg-gradient-to-r from-brand-teal to-brand-cyan text-brand-dark font-black shadow-lg shadow-brand-teal/20' : 'glass-card text-slate-300 hover:text-brand-teal font-bold'"
+                    class="px-5 py-2.5 rounded-xl text-xs sm:text-sm transition-all duration-300 flex items-center gap-2">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>همه نظرات</span>
+                </button>
+                <button @click="activeTab = 'karyar'"
+                    :class="activeTab === 'karyar' ? 'bg-gradient-to-r from-brand-teal to-brand-cyan text-brand-dark font-black shadow-lg shadow-brand-teal/20' : 'glass-card text-slate-300 hover:text-brand-teal font-bold'"
+                    class="px-5 py-2.5 rounded-xl text-xs sm:text-sm transition-all duration-300 flex items-center gap-2">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span>پروژه کار یار</span>
+                </button>
+                <button @click="activeTab = 'gaming'"
+                    :class="activeTab === 'gaming' ? 'bg-gradient-to-r from-brand-teal to-brand-cyan text-brand-dark font-black shadow-lg shadow-brand-teal/20' : 'glass-card text-slate-300 hover:text-brand-teal font-bold'"
+                    class="px-5 py-2.5 rounded-xl text-xs sm:text-sm transition-all duration-300 flex items-center gap-2">
+                    <i class="fa-solid fa-gamepad"></i>
+                    <span>پروژه‌های گیمینگ</span>
+                </button>
+                <button @click="activeTab = 'backend'"
+                    :class="activeTab === 'backend' ? 'bg-gradient-to-r from-brand-teal to-brand-cyan text-brand-dark shadow-lg shadow-brand-teal/20 font-black' : 'glass-card text-slate-300 hover:text-brand-teal font-bold'"
+                    class="px-5 py-2.5 rounded-xl text-xs sm:text-sm transition-all duration-300 flex items-center gap-2">
+                    <i class="fa-solid fa-code text-xs"></i>
+                    <span>تیم و همکاران سیستم</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ==================== TESTIMONIALS GRID ==================== -->
+        <section class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- TESTIMONIAL 1: کار یار -->
+            <article x-show="activeTab === 'all' || activeTab === 'karyar'"
+                x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95"
+                x-transition:enter-end="opacity-100 scale-100"
+                class="testimonial-card glass-card rounded-3xl p-7 flex flex-col justify-between border-brand-teal/20 relative group">
+
+                <div class="space-y-4">
+                    <!-- Rating Stars & Quote Icon -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-1 text-amber-400 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <i
+                            class="fa-solid fa-quote-left text-3xl text-brand-teal/20 group-hover:text-brand-teal/40 transition-colors"></i>
+                    </div>
+
+                    <p class="text-slate-200 text-xs sm:text-sm leading-relaxed font-light">
+                        «سرعت بالای کدنویسی و تمیزی رابط کاربری در پلتفرم «کار یار» واقعاً بی‌نظیر بود. ادغام
+                        انیمیشن‌های Three.js و AOS بدون حتی کوچک‌ترین افت فریم روی موبایل، تجارب متفاوتی برای کاربران ما
+                        ساخت.»
+                    </p>
+                </div>
+
+                <!-- Author Info -->
+                <div class="pt-6 mt-6 border-t border-slate-800/80 flex items-center gap-4">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-teal to-brand-cyan flex items-center justify-center font-black text-brand-dark text-lg shadow-lg">
+                        م‌م
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-slate-100">مهندس محمدی</h4>
+                        <p class="text-[11px] text-brand-teal font-medium mt-0.5">مدیر محصول سامانه «کار یار»</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- TESTIMONIAL 2: Back-end Developer Partner -->
+            <article x-show="activeTab === 'all' || activeTab === 'backend'"
+                x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95"
+                x-transition:enter-end="opacity-100 scale-100"
+                class="testimonial-card glass-card rounded-3xl p-7 flex flex-col justify-between border-brand-teal/20 relative group">
+
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-1 text-amber-400 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <i
+                            class="fa-solid fa-quote-left text-3xl text-brand-teal/20 group-hover:text-brand-teal/40 transition-colors"></i>
+                    </div>
+
+                    <p class="text-slate-200 text-xs sm:text-sm leading-relaxed font-light">
+                        «به عنوان توسعه‌دهنده بک‌اند Python/Django، همکاری با فرانت‌اند کار حرفه‌ای که مفاهیم API و
+                        متدهای ارتباطی را کاملاً درک می‌کند یک غنیمت است. کدهای فرانت تمیز، مدولار و آماده اتصال سریع به
+                        سرویس‌ها بودند.»
+                    </p>
+                </div>
+
+                <div class="pt-6 mt-6 border-t border-slate-800/80 flex items-center gap-4">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-cyan to-blue-600 flex items-center justify-center font-black text-white text-lg shadow-lg">
+                        ع‌ر
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-slate-100">علیرضا رضایی</h4>
+                        <p class="text-[11px] text-brand-cyan font-medium mt-0.5">توسعه‌دهنده ارشد Python & Django</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- TESTIMONIAL 3: گیم مارکت -->
+            <article x-show="activeTab === 'all' || activeTab === 'gaming'"
+                x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95"
+                x-transition:enter-end="opacity-100 scale-100"
+                class="testimonial-card glass-card rounded-3xl p-7 flex flex-col justify-between border-brand-teal/20 relative group">
+
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-1 text-amber-400 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <i
+                            class="fa-solid fa-quote-left text-3xl text-brand-teal/20 group-hover:text-brand-teal/40 transition-colors"></i>
+                    </div>
+
+                    <p class="text-slate-200 text-xs sm:text-sm leading-relaxed font-light">
+                        «طراحی تم دارک مارکت‌پلیس گیمینگ ما دقیقا شبیه وب‌سایت‌های بین‌المللی شد. تعاملات Alpine.js
+                        فوق‌العاده سبکند و نرخ تبدیل و ماندگاری کاربران سایت ما را ۳۵ درصد افزایش دادند!»
+                    </p>
+                </div>
+
+                <div class="pt-6 mt-6 border-t border-slate-800/80 flex items-center gap-4">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-500 to-brand-teal flex items-center justify-center font-black text-white text-lg shadow-lg">
+                        س‌ک
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-slate-100">سامان کاظمی</h4>
+                        <p class="text-[11px] text-brand-teal font-medium mt-0.5">بنیان‌گذار GameMarket</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- TESTIMONIAL 4: ماشین سرا -->
+            <article x-show="activeTab === 'all'" x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                class="testimonial-card glass-card rounded-3xl p-7 flex flex-col justify-between border-brand-teal/20 relative group">
+
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-1 text-amber-400 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <i
+                            class="fa-solid fa-quote-left text-3xl text-brand-teal/20 group-hover:text-brand-teal/40 transition-colors"></i>
+                    </div>
+
+                    <p class="text-slate-200 text-xs sm:text-sm leading-relaxed font-light">
+                        «در پروژه ماشین‌سرا، سرعت بارگذاری صفحات و ریسپانسیو بودن فرم‌ها بر روی تمامی دستگاه‌ها
+                        فوق‌العاده عالی بود. تعهد کاری و پشتیبانی مستمر تیم Apexo تحسین‌برانگیز است.»
+                    </p>
+                </div>
+
+                <div class="pt-6 mt-6 border-t border-slate-800/80 flex items-center gap-4">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-500 to-brand-teal flex items-center justify-center font-black text-slate-950 text-lg shadow-lg">
+                        ح‌ن
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-slate-100">حسین نوری</h4>
+                        <p class="text-[11px] text-brand-teal font-medium mt-0.5">مدیر فروشگاه آنلاین خودرو</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- TESTIMONIAL 5: بازی جاوا اسکریپت -->
+            <article x-show="activeTab === 'all' || activeTab === 'gaming'"
+                x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95"
+                x-transition:enter-end="opacity-100 scale-100"
+                class="testimonial-card glass-card rounded-3xl p-7 flex flex-col justify-between border-brand-teal/20 relative group">
+
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-1 text-amber-400 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <i
+                            class="fa-solid fa-quote-left text-3xl text-brand-teal/20 group-hover:text-brand-teal/40 transition-colors"></i>
+                    </div>
+
+                    <p class="text-slate-200 text-xs sm:text-sm leading-relaxed font-light">
+                        «خلاقیت در پیاده‌سازی مکانیزم‌های بازی مرورگری Snake Shooter با Vanilla JS و افکت‌های صوتی نئون
+                        خیره‌کننده بود. کدهای منطقی پروژه بسیار منظم و خوانا نوشته شده‌اند.»
+                    </p>
+                </div>
+
+                <div class="pt-6 mt-6 border-t border-slate-800/80 flex items-center gap-4">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-rose-500 to-brand-cyan flex items-center justify-center font-black text-white text-lg shadow-lg">
+                        د‌ا
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-slate-100">دانیال ابراهیمی</h4>
+                        <p class="text-[11px] text-brand-cyan font-medium mt-0.5">توسعه‌دهنده بازی‌های مستقل</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- TESTIMONIAL 6: مشاوره و UI/UX -->
+            <article x-show="activeTab === 'all'" x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                class="testimonial-card glass-card rounded-3xl p-7 flex flex-col justify-between border-brand-teal/20 relative group">
+
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-1 text-amber-400 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <i
+                            class="fa-solid fa-quote-left text-3xl text-brand-teal/20 group-hover:text-brand-teal/40 transition-colors"></i>
+                    </div>
+
+                    <p class="text-slate-200 text-xs sm:text-sm leading-relaxed font-light">
+                        «صداقت در مشاوره، پیاده‌سازی دقیق طرح‌های Figma و ساخت کامپوننت‌های قابل بازاستفاده با Tailwind
+                        CSS باعث شد تا روند بازطراحی اپلیکیشن ما به بهترین شکل پیش برود.»
+                    </p>
+                </div>
+
+                <div class="pt-6 mt-6 border-t border-slate-800/80 flex items-center gap-4">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-500 to-brand-teal flex items-center justify-center font-black text-slate-950 text-lg shadow-lg">
+                        م‌ش
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-slate-100">مریم شریفی</h4>
+                        <p class="text-[11px] text-brand-teal font-medium mt-0.5">طراح ارشد UI/UX</p>
+                    </div>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- ==================== SUBMIT TESTIMONIAL FORM ==================== -->
+        <!-- فرم تعاملی ثبت دیدگاه و تجربه همکاری جدید -->
+        <section class="mt-24 max-w-3xl mx-auto">
+            <div class="glass-card p-8 sm:p-12 rounded-3xl border border-brand-teal/30 relative">
+
+                <div class="text-center space-y-3 mb-8">
+                    <h2 class="text-2xl sm:text-3xl font-black text-slate-100">
+                        تجربه همکاری خود با <span class="text-gradient">Apexo</span> را بنویسید
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-300">
+                        دیدگاه شما به ما کمک می‌کند تا کیفیت خدماتمان را روزبه‌روز ارتقا دهیم.
+                    </p>
+                </div>
+
+                <!-- Success Alert -->
+                <div x-show="submitted" x-cloak
+                    class="p-4 rounded-2xl bg-brand-teal/10 border border-brand-teal/40 text-brand-teal text-center space-y-2 mb-6">
+                    <i class="fa-solid fa-circle-check text-2xl"></i>
+                    <p class="text-sm font-bold">دیدگاه شما با موفقیت ثبت شد!</p>
+                    <p class="text-xs text-slate-300">پس از تایید مدیر، در این صفحه نمایش داده خواهد شد.</p>
+                </div>
+
+                <!-- Form -->
+                <form x-show="!submitted" @submit.prevent="submitted = true" class="space-y-5">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div class="space-y-1.5">
+                            <label class="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                                <i class="fa-solid fa-user text-brand-teal text-[10px]"></i>
+                                <span>نام و نام خانوادگی</span>
+                            </label>
+                            <input type="text" required x-model="newComment.name" placeholder="مثال: علی محمدی"
+                                class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-800 text-slate-100 text-xs focus:border-brand-teal focus:outline-none transition-colors">
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <label class="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                                <i class="fa-solid fa-briefcase text-brand-teal text-[10px]"></i>
+                                <span>سمت شغلی / شرکت</span>
+                            </label>
+                            <input type="text" required x-model="newComment.role" placeholder="مثال: مدیر فنی / همکار"
+                                class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-800 text-slate-100 text-xs focus:border-brand-teal focus:outline-none transition-colors">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div class="space-y-1.5">
+                            <label class="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                                <i class="fa-solid fa-layer-group text-brand-teal text-[10px]"></i>
+                                <span>نام پروژه (اختیاری)</span>
+                            </label>
+                            <input type="text" x-model="newComment.project" placeholder="مثال: کار یار، ماشین سرا..."
+                                class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-800 text-slate-100 text-xs focus:border-brand-teal focus:outline-none transition-colors">
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <label class="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                                <i class="fa-solid fa-star text-amber-400 text-[10px]"></i>
+                                <span>امتیاز شما به همکاری</span>
+                            </label>
+                            <select x-model="newComment.rating"
+                                class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-800 text-slate-100 text-xs focus:border-brand-teal focus:outline-none transition-colors">
+                                <option value="5">⭐⭐⭐⭐⭐ (عالی - ۵ از ۵)</option>
+                                <option value="4">⭐⭐⭐⭐ (خیلی خوب - ۴ از ۵)</option>
+                                <option value="3">⭐⭐⭐ (خوب - ۳ از ۵)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label class="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                            <i class="fa-solid fa-comment-dots text-brand-teal text-[10px]"></i>
+                            <span>متن نظر شما</span>
+                        </label>
+                        <textarea required x-model="newComment.message" rows="4"
+                            placeholder="تجربه همکاری خود از نظر کیفیت، سرعت و پشتیبانی را شرح دهید..."
+                            class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-800 text-slate-100 text-xs focus:border-brand-teal focus:outline-none transition-colors resize-none"></textarea>
+                    </div>
+
+                    <button type="submit"
+                        class="btn-gradient w-full text-brand-dark font-black py-4 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>ارسال و ثبت دیدگاه</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="relative z-10 py-8 text-center text-xs text-slate-500 border-t border-slate-800 glass-nav">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <div
+                    class="w-6 h-6 rounded-lg bg-gradient-to-tr from-brand-teal to-brand-cyan flex items-center justify-center text-brand-dark font-black text-xs">
+                    A
+                </div>
+                <span class="text-sm font-bold text-slate-300">Apexo Testimonials &copy; 2026</span>
+            </div>
+
+            <p>© ۲۰۲۶ تمامی حقوق محفوظ است. طراحی شده در <strong class="text-slate-300">Apexo</strong>.</p>
+
+            <div class="flex gap-4 text-slate-400 text-sm">
+                <a href="#" class="hover:text-brand-teal transition-colors"><i class="fa-brands fa-github"></i></a>
+                <a href="#" class="hover:text-brand-teal transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#" class="hover:text-brand-teal transition-colors"><i class="fa-brands fa-telegram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS Helper for Language Switching Mock -->
+    <script>
+        function changeLanguage(lang) {
+            const currentLangText = document.getElementById('current-lang-text');
+            const checkFa = document.getElementById('check-fa');
+            const checkEn = document.getElementById('check-en');
+
+            if (lang === 'fa') {
+                if (currentLangText) currentLangText.textContent = 'فارسی';
+                if (checkFa) checkFa.classList.remove('hidden');
+                if (checkEn) checkEn.classList.add('hidden');
+                document.documentElement.dir = 'rtl';
+                document.documentElement.lang = 'fa';
+            } else {
+                if (currentLangText) currentLangText.textContent = 'English';
+                if (checkFa) checkFa.classList.add('hidden');
+                if (checkEn) checkEn.classList.remove('hidden');
+                document.documentElement.dir = 'ltr';
+                document.documentElement.lang = 'en';
+            }
+        }
+    </script>
+
+</body>
+
+</html>

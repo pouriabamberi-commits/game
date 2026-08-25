@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خدمات ما | Apexo - راه‌حل جامع هوش مصنوعی، فرانت‌اند و بک‌اند</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="خدمات تخصصی Apexo در سه ستون هوش مصنوعی، فرانت‌اند و بک‌اند برای خلق محصولات تمام‌عیار و آماده تولید.">
+
+    <!-- Fonts: Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Project Compiled CSS (Tailwind v4 Output) -->
+    <link rel="stylesheet" href="./styles/output.css">
+
+    <style>
+        body {
+            font-family: 'Vazirmatn', var(--font-sans);
+            background-color: var(--color-brand-dark);
+            color: var(--color-slate-100);
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism using Apexo CSS Tokens */
+        .glass-card {
+            background: color-mix(in srgb, var(--color-brand-card) 75%, transparent);
+            backdrop-filter: blur(var(--blur-xl));
+            -webkit-backdrop-filter: blur(var(--blur-xl));
+            border: 1px solid color-mix(in srgb, var(--color-brand-teal) 15%, transparent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: color-mix(in srgb, var(--color-brand-teal) 45%, transparent);
+            box-shadow: 0 15px 45px color-mix(in srgb, var(--color-brand-teal) 20%, transparent);
+            transform: translateY(-6px);
+        }
+
+        .glass-nav {
+            background: color-mix(in srgb, var(--color-brand-dark) 85%, transparent);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid color-mix(in srgb, var(--color-brand-teal) 12%, transparent);
+        }
+
+        /* Gradient Utilities */
+        .text-gradient {
+            background: linear-gradient(135deg, var(--color-brand-teal) 0%, var(--color-brand-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-gradient {
+            background: linear-gradient(135deg, var(--color-brand-teal) 0%, var(--color-brand-cyan) 100%);
+            transition: all var(--default-transition-duration) var(--default-transition-timing-function);
+        }
+
+        .btn-gradient:hover {
+            box-shadow: 0 0 30px color-mix(in srgb, var(--color-brand-teal) 60%, transparent);
+            transform: translateY(-2px);
+        }
+
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: 0;
+            opacity: 0.25;
+            pointer-events: none;
+        }
+
+        /* Custom Keyframe Animations */
+        @keyframes float-slow {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-12px) rotate(2deg);
+            }
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                filter: drop-shadow(0 0 15px color-mix(in srgb, var(--color-brand-teal) 40%, transparent));
+            }
+
+            50% {
+                filter: drop-shadow(0 0 35px color-mix(in srgb, var(--color-brand-cyan) 80%, transparent));
+            }
+        }
+
+        .animate-float {
+            animation: float-slow 5s ease-in-out infinite;
+        }
+
+        .animate-glow-icon {
+            animation: pulse-glow 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+
+<body
+    class="relative selection:bg-brand-teal selection:text-brand-dark min-h-screen flex flex-col justify-between overflow-x-hidden">
+
+    <!-- Ambient Glow Orbs Background -->
+    <div class="glow-orb w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-brand-teal -top-20 -right-20"></div>
+    <div class="glow-orb w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-brand-cyan top-[35%] -left-40"></div>
+    <div class="glow-orb w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-brand-accent bottom-0 right-0"></div>
+
+    <!-- ==================== HEADER ==================== -->
+    <header x-data="{ mobileMenuOpen: false, searchModalOpen: false }"
+        class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+
+                <!-- 1. Logo -->
+                <a href="#home" class="flex items-center gap-3 group">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-teal to-brand-cyan flex items-center justify-center text-brand-dark font-black text-xl shadow-lg shadow-brand-teal/20 group-hover:scale-105 transition-transform">
+                        <img src="./img/photo_5796248624873279473_y.jpg" class="rounded-full" alt="">
+                    </div>
+                    <span class="text-2xl font-black tracking-wider text-slate-100">Apexo<span
+                            class="text-brand-teal">.</span></span>
+                </a>
+
+                <!-- 2. Desktop Navigation (شامل هر ۶ بخش درخواست‌شده) -->
+                <nav class="hidden lg:flex items-center gap-6 text-sm font-bold text-slate-300">
+                    <a href="#home" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                        <i class="fa-solid fa-house text-xs text-brand-teal"></i>
+                        <span>خانه</span>
+                    </a>
+                    <a href="./about.html" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                        <i class="fa-solid fa-users text-xs text-brand-teal"></i>
+                        <span>درباره ما</span>
+                    </a>
+                    <a href="./portfolio.html" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                        <i class="fa-solid fa-briefcase text-xs text-brand-teal"></i>
+                        <span>نمونه کارها</span>
+                    </a>
+                    <a href="./servise.html "class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                        <i class="fa-solid fa-layer-group text-xs text-brand-teal"></i>
+                        <span>خدمات و تخصص‌ها</span>
+                    </a>
+                    <a href="./testimonials.html"
+                        class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                        <i class="fa-solid fa-comments text-xs text-brand-teal"></i>
+                        <span>نظرات</span>
+                    </a>
+                    <a href="#contact" onclick="fireSwal()" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                        <i class="fa-solid fa-envelope text-xs text-brand-teal"></i>
+                        <span>تماس با ما</span>
+                    </a>
+
+                </nav>
+
+                <!-- Language Switcher Dropdown -->
+                <div class="relative inline-block text-right" x-data="{ open: false }">
+                    <!-- Main Toggle Button -->
+                    <button @click="open = !open" @click.outside="open = false" type="button"
+                        class="glass-card px-3 py-2 rounded-xl border border-brand-teal/20 text-slate-200 hover:text-brand-teal hover:border-brand-teal/50 transition-all flex items-center gap-2 text-xs font-bold active:scale-95">
+                        <i class="fa-solid fa-globe text-brand-teal text-sm"></i>
+                        <span id="current-lang-text">فارسی</span>
+                        <i class="fa-solid fa-chevron-down text-[10px] transition-transform duration-200"
+                            :class="open ? 'rotate-180' : ''"></i>
+                    </button>
+
+                    <!-- Dropdown Menu (دستور style حذف شد و x-cloak اضافه شد) -->
+                    <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-150"
+                        x-transition:enter-start="opacity-0 scale-95 -translate-y-2"
+                        x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+                        x-transition:leave="transition ease-in duration-100"
+                        x-transition:leave-start="opacity-100 scale-100 translate-y-0"
+                        x-transition:leave-end="opacity-0 scale-95 -translate-y-2"
+                        class="absolute left-0 mt-2 w-32 rounded-xl bg-slate-950/90 border border-slate-800 shadow-xl backdrop-blur-xl z-[60] overflow-hidden py-1.5">
+
+                        <!-- Persian Option -->
+                        <button type="button" onclick="changeLanguage('fa')" @click="open = false"
+                            class="w-full px-3 py-2 text-right text-xs font-medium text-slate-200 hover:bg-brand-teal/10 hover:text-brand-teal flex items-center justify-between transition-colors">
+                            <span class="flex items-center gap-2">🇮🇷 فارسی</span>
+                            <i id="check-fa" class="fa-solid fa-check text-brand-teal text-xs"></i>
+                        </button>
+
+                        <div class="border-t border-slate-800/80 my-1"></div>
+
+                        <!-- English Option -->
+                        <button type="button" onclick="changeLanguage('en')" @click="open = false"
+                            class="w-full px-3 py-2 text-right text-xs font-medium text-slate-200 hover:bg-brand-teal/10 hover:text-brand-teal flex items-center justify-between transition-colors">
+                            <span class="flex items-center gap-2">🇬🇧 English</span>
+                            <i id="check-en" class="fa-solid fa-check text-brand-teal text-xs hidden"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- 3. Fast Actions (دسترسی سریع و دکمه‌های اکشن) -->
+                <div class="flex items-center gap-3">
+
+
+                    <!-- Desktop Call CTA -->
+                    <button onclick="handleConsultationClick()"
+                        class="hidden sm:flex btn-gradient text-brand-dark font-black px-5 py-2.5 rounded-xl text-xs shadow-md items-center gap-2">
+                        <i class="fa-solid fa-headset"></i>
+                        <span>مشاوره سریع</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Mobile Thumb-Friendly Fullscreen Menu (منوی بهینه موبایل) -->
+        <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0"
+            x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0"
+            x-transition:leave-end="opacity-0 -translate-y-4"
+            class="lg:hidden glass-nav border-t border-brand-teal/20 px-6 py-6 space-y-4 max-h-[85vh] overflow-y-auto"
+            style="display: none;">
+
+            <p class="text-[11px] font-bold text-brand-teal uppercase tracking-widest">دسترسی مستقیم به صفحات</p>
+
+            <div class="grid grid-cols-2 gap-2.5">
+                <a href="#home" @click="mobileMenuOpen = false"
+                    class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800 text-slate-200 hover:border-brand-teal/40">
+                    <i class="fa-solid fa-house text-brand-teal"></i>
+                    <span class="text-xs font-bold">خانه</span>
+                </a>
+                <a href="./about.html" @click="mobileMenuOpen = false"
+                    class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800 text-slate-200 hover:border-brand-teal/40">
+                    <i class="fa-solid fa-users text-brand-teal"></i>
+                    <span class="text-xs font-bold">درباره ما</span>
+                </a>
+                <a href="./portfolio.html" @click="mobileMenuOpen = false"
+                    class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800 text-slate-200 hover:border-brand-teal/40">
+                    <i class="fa-solid fa-briefcase text-brand-teal"></i>
+                    <span class="text-xs font-bold">نمونه کارها</span>
+                </a>
+                <a href="./servise.html" @click=""
+                    class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800 text-slate-200 hover:border-brand-teal/40">
+                    <i class="fa-solid fa-layer-group text-brand-teal"></i>
+                    <span class="text-xs font-bold">خدمات و تخصص‌ها</span>
+                </a>
+                <a href="./testimonials.html" @click="mobileMenuOpen = false"
+                    class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800 text-slate-200 hover:border-brand-teal/40">
+                    <i class="fa-solid fa-comments text-brand-teal"></i>
+                    <span class="text-xs font-bold">نظرات</span>
+                </a>
+                <a href="#contact" @click="mobileMenuOpen = false"
+                    class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-slate-800 text-slate-200 hover:border-brand-teal/40">
+                    <i class="fa-solid fa-envelope text-brand-teal"></i>
+                    <span class="text-xs font-bold">تماس با ما</span>
+                </a>
+            </div>
+
+            <div class="pt-2">
+                <button onclick="handleConsultationClick()"
+                    class="btn-gradient w-full text-brand-dark font-black py-3.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg">
+                    <i class="fa-solid fa-phone-volume"></i>
+                    <span>ثبت درخواست مشاوره رایگان</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 5. Search & Fast Jump Modal (Ctrl+K) -->
+        <div x-show="searchModalOpen" x-keydown.window.escape="searchModalOpen = false"
+            x-keydown.window.ctrl.k.prevent="searchModalOpen = true"
+            class="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-black/80 backdrop-blur-md"
+            style="display: none;">
+            <div @click.away="searchModalOpen = false"
+                class="w-full max-w-xl glass-card rounded-3xl p-6 border-brand-teal/40 shadow-2xl space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <div class="flex items-center gap-3 w-full">
+                        <i class="fa-solid fa-magnifying-glass text-brand-teal text-lg"></i>
+                        <input type="text" placeholder="به کدام بخش می‌خواهید بروید؟ (تایپ کنید...)"
+                            class="w-full bg-transparent text-sm text-white focus:outline-none" autofocus>
+                    </div>
+                    <button @click="searchModalOpen = false" class="text-slate-400 hover:text-white"><i
+                            class="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <p class="text-[11px] text-slate-400 font-semibold">میانبرهای سریع:</p>
+                <div class="space-y-2">
+                    <a href="#portfolio" @click="searchModalOpen = false"
+                        class="flex items-center justify-between p-3 rounded-xl bg-slate-900/80 hover:bg-brand-teal/10 hover:border-brand-teal/40 border border-slate-800 transition-all text-xs">
+                        <span class="font-bold text-slate-200"><i
+                                class="fa-solid fa-briefcase text-brand-teal ml-2"></i> نمونه‌کارهای اجرا شده</span>
+                        <i class="fa-solid fa-arrow-left text-slate-500"></i>
+                    </a>
+                    <a href="#services" @click="searchModalOpen = false"
+                        class="flex items-center justify-between p-3 rounded-xl bg-slate-900/80 hover:bg-brand-teal/10 hover:border-brand-teal/40 border border-slate-800 transition-all text-xs">
+                        <span class="font-bold text-slate-200"><i
+                                class="fa-solid fa-layer-group text-brand-teal ml-2"></i> لیست خدمات و تخصص‌ها</span>
+                        <i class="fa-solid fa-arrow-left text-slate-500"></i>
+                    </a>
+                    <a href="#contact" @click="searchModalOpen = false"
+                        class="flex items-center justify-between p-3 rounded-xl bg-slate-900/80 hover:bg-brand-teal/10 hover:border-brand-teal/40 border border-slate-800 transition-all text-xs">
+                        <span class="font-bold text-slate-200"><i class="fa-solid fa-envelope text-brand-teal ml-2"></i>
+                            فرم سریع تماس با ما</span>
+                        <i class="fa-solid fa-arrow-left text-slate-500"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== MAIN CONTENT SECTION ==================== -->
+    <main class="pt-32 pb-24 relative z-10 flex-1">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- 1. Section Hero Header -->
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-teal/10 border border-brand-teal/30 text-brand-teal text-xs font-bold animate-float">
+                    <i class="fa-solid fa-cube text-sm"></i>
+                    <span>خدمات و تخصص‌های اختصاصی Apexo</span>
+                </div>
+
+                <h1 class="text-3xl sm:text-5xl font-black text-slate-100 leading-tight">
+                    سه ستون تخصص؛ <span class="text-gradient">یک راه‌حل کامل</span>
+                </h1>
+
+                <p class="text-slate-300 text-base sm:text-lg leading-relaxed pt-2 font-medium">
+                    در <strong class="text-brand-teal">Apexo</strong>، ما هوش مصنوعی، تجربهٔ کاربری و زیرساخت را در کنار
+                    هم می‌چینیم تا محصولی تمام‌عیار تحویل دهیم. باور ما این است که یک راه‌حل عالی، زمانی کامل می‌شود که
+                    مغز متفکر (AI)، چهرهٔ جذاب (فرانت‌اند) و بدنهٔ محکم (بک‌اند) هماهنگ باشند.
+                </p>
+            </div>
+
+            <!-- 2. The 3 Core Pillars Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+
+                <!-- Pillar 1: AI & Machine Learning -->
+                <div class="glass-card rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden group">
+                    <div
+                        class="absolute -top-12 -left-12 w-32 h-32 bg-brand-teal/10 rounded-full blur-2xl group-hover:bg-brand-teal/20 transition-all">
+                    </div>
+
+                    <div>
+                        <!-- Icon & Tag -->
+                        <div class="flex items-center justify-between mb-6">
+                            <div
+                                class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-teal/20 to-brand-teal/5 border border-brand-teal/30 flex items-center justify-center text-brand-teal text-2xl animate-glow-icon">
+                                <i class="fa-solid fa-brain"></i>
+                            </div>
+                            <span
+                                class="text-xs font-mono font-bold text-brand-teal bg-brand-teal/10 px-3 py-1 rounded-full border border-brand-teal/20">
+                                AI & ML
+                            </span>
+                        </div>
+
+                        <!-- Card Title & Subtitle -->
+                        <h2 class="text-xl font-bold text-slate-100 mb-2 group-hover:text-brand-teal transition-colors">
+                            هوش مصنوعی و یادگیری ماشین
+                        </h2>
+                        <p class="text-xs font-semibold text-brand-cyan mb-6">
+                            تبدیل داده‌های خام به بینش‌های هوشمند.
+                        </p>
+
+                        <!-- Bullet Points -->
+                        <ul
+                            class="space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-slate-800/80 pt-6">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-teal text-sm mt-0.5 shrink-0"></i>
+                                <span>توسعهٔ مدل‌های پیش‌بینی، تشخیص الگو و پردازش داده‌های
+                                    ساخت‌یافته/غیرساخت‌یافته</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-teal text-sm mt-0.5 shrink-0"></i>
+                                <span>پیاده‌سازی راه‌حل‌های سفارشی برای مسائل واقعی کسب‌وکار</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-teal text-sm mt-0.5 shrink-0"></i>
+                                <span>استقرار مدل‌ها در محیط تولید با رویکرد مهندسی و نتیجه‌محور</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Tech Badge Footer -->
+                    <div
+                        class="mt-8 pt-4 border-t border-slate-800/50 flex items-center justify-between text-slate-400 text-xs">
+                        <span>تکنولوژی‌ها:</span>
+                        <span class="font-mono text-slate-300">Python • PyTorch • Scikit</span>
+                    </div>
+                </div>
+
+                <!-- Pillar 2: Frontend & UX -->
+                <div class="glass-card rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden group">
+                    <div
+                        class="absolute -top-12 -left-12 w-32 h-32 bg-brand-cyan/10 rounded-full blur-2xl group-hover:bg-brand-cyan/20 transition-all">
+                    </div>
+
+                    <div>
+                        <!-- Icon & Tag -->
+                        <div class="flex items-center justify-between mb-6">
+                            <div
+                                class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-cyan/20 to-brand-cyan/5 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan text-2xl animate-glow-icon">
+                                <i class="fa-solid fa-laptop-code"></i>
+                            </div>
+                            <span
+                                class="text-xs font-mono font-bold text-brand-cyan bg-brand-cyan/10 px-3 py-1 rounded-full border border-brand-cyan/20">
+                                Frontend & UX
+                            </span>
+                        </div>
+
+                        <!-- Card Title & Subtitle -->
+                        <h2 class="text-xl font-bold text-slate-100 mb-2 group-hover:text-brand-cyan transition-colors">
+                            فرانت‌اند و تجربهٔ کاربری
+                        </h2>
+                        <p class="text-xs font-semibold text-brand-teal mb-6">
+                            رابط‌هایی که کاربر عاشقش می‌شود.
+                        </p>
+
+                        <!-- Bullet Points -->
+                        <ul
+                            class="space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-slate-800/80 pt-6">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-cyan text-sm mt-0.5 shrink-0"></i>
+                                <span>طراحی و پیاده‌سازی اپلیکیشن‌های مدرن، سریع و واکنش‌گرا با React، Next.js و
+                                    TypeScript</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-cyan text-sm mt-0.5 shrink-0"></i>
+                                <span>خلق تجربه‌ای تمیز، ساده و قابل استفاده برای کاربر نهایی</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-cyan text-sm mt-0.5 shrink-0"></i>
+                                <span>بهینه‌سازی عملکرد و دسترسی (Performance & Accessibility)</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Tech Badge Footer -->
+                    <div
+                        class="mt-8 pt-4 border-t border-slate-800/50 flex items-center justify-between text-slate-400 text-xs">
+                        <span>تکنولوژی‌ها:</span>
+                        <span class="font-mono text-slate-300">React • Next.js • Tailwind</span>
+                    </div>
+                </div>
+
+                <!-- Pillar 3: Backend & Infrastructure -->
+                <div class="glass-card rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden group">
+                    <div
+                        class="absolute -top-12 -left-12 w-32 h-32 bg-brand-accent/10 rounded-full blur-2xl group-hover:bg-brand-accent/20 transition-all">
+                    </div>
+
+                    <div>
+                        <!-- Icon & Tag -->
+                        <div class="flex items-center justify-between mb-6">
+                            <div
+                                class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-accent/20 to-brand-accent/5 border border-brand-accent/30 flex items-center justify-center text-brand-teal text-2xl animate-glow-icon">
+                                <i class="fa-solid fa-server"></i>
+                            </div>
+                            <span
+                                class="text-xs font-mono font-bold text-brand-teal bg-brand-accent/10 px-3 py-1 rounded-full border border-brand-accent/20">
+                                Backend & Infra
+                            </span>
+                        </div>
+
+                        <!-- Card Title & Subtitle -->
+                        <h2 class="text-xl font-bold text-slate-100 mb-2 group-hover:text-brand-teal transition-colors">
+                            بک‌اند و زیرساخت
+                        </h2>
+                        <p class="text-xs font-semibold text-brand-cyan mb-6">
+                            سیستم‌هایی که هر حجمی را تحمل می‌کنند.
+                        </p>
+
+                        <!-- Bullet Points -->
+                        <ul
+                            class="space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-slate-800/80 pt-6">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-teal text-sm mt-0.5 shrink-0"></i>
+                                <span>ساخت APIهای مقیاس‌پذیر و امن با Node.js و NestJS</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-teal text-sm mt-0.5 shrink-0"></i>
+                                <span>طراحی معماری تمیز، ماژولار و آمادهٔ تولید (Production-Ready)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-teal text-sm mt-0.5 shrink-0"></i>
+                                <span>بهینه‌سازی سرعت با Redis، کش‌گذاری هوشمند و الگوهای میکروسرویس</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Tech Badge Footer -->
+                    <div
+                        class="mt-8 pt-4 border-t border-slate-800/50 flex items-center justify-between text-slate-400 text-xs">
+                        <span>تکنولوژی‌ها:</span>
+                        <span class="font-mono text-slate-300">Node.js • NestJS • Redis</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 3. Why Apexo? Highlight Banner -->
+            <div class="glass-card rounded-3xl p-8 sm:p-12 relative overflow-hidden border border-brand-teal/30">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+
+                    <div class="lg:col-span-8 space-y-4">
+                        <div class="flex items-center gap-2 text-brand-teal text-sm font-bold">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span>ارزش افزوده ما برای کسب‌وکار شما</span>
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-black text-slate-100">
+                            چرا Apexo؟
+                        </h3>
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed font-medium">
+                            چون ما فقط یک بخش از پروژه را نمی‌بینیم؛ <span class="text-brand-teal font-bold">کل محصول را
+                                از پایه تا سقف طراحی می‌کنیم</span>. با کدی قابل نگهداری، تست‌پذیر و ماندگار.
+                        </p>
+                    </div>
+
+                    <div class="lg:col-span-4 flex justify-start lg:justify-end">
+                        <a href="index.html#contact"
+                            class="btn-gradient text-brand-dark font-black px-8 py-4 rounded-2xl text-sm shadow-xl flex items-center gap-3 group">
+                            <span>شروع همکاری با ما</span>
+                            <i class="fa-solid fa-arrow-left group-hover:-translate-x-1.5 transition-transform"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="glass-nav border-t border-brand-teal/15 pt-16 pb-8 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Brand Info -->
+                <div class="space-y-4 md:col-span-2">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-teal to-brand-cyan flex items-center justify-center text-brand-dark font-black text-lg">
+                            A
+                        </div>
+                        <span class="text-xl font-black text-slate-100">Apexo<span
+                                class="text-brand-teal">.</span></span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-sm">
+                        ترکیب هوش مصنوعی، فرانت‌اند مدرن و زیرساخت مقیاس‌پذیر برای خلق محصولات دیجیتال در کلاس جهانی.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="space-y-3">
+                    <p class="text-xs font-bold text-brand-teal uppercase tracking-widest">لینک‌های سریع</p>
+                    <ul class="space-y-2 text-xs font-semibold text-slate-300">
+                        <li><a href="index.html#home" class="hover:text-brand-teal transition-colors">صفحه اصلی</a></li>
+                        <li><a href="services.html" class="hover:text-brand-teal transition-colors">خدمات و تخصص‌ها</a>
+                        </li>
+                        <li><a href="index.html#portfolio" class="hover:text-brand-teal transition-colors">نمونه
+                                کارها</a></li>
+                        <li><a href="index.html#contact" class="hover:text-brand-teal transition-colors">ارتباط با
+                                ما</a></li>
+                    </ul>
+                </div>
+
+                <!-- Social & Contact -->
+                <div class="space-y-3">
+                    <p class="text-xs font-bold text-brand-teal uppercase tracking-widest">ارتباط با ما</p>
+                    <div class="flex items-center gap-3 text-slate-300 text-lg">
+                        <a href="#"
+                            class="w-9 h-9 rounded-xl glass-card flex items-center justify-center hover:text-brand-teal hover:border-brand-teal/40 transition-all"><i
+                                class="fa-brands fa-github"></i></a>
+                        <a href="#"
+                            class="w-9 h-9 rounded-xl glass-card flex items-center justify-center hover:text-brand-teal hover:border-brand-teal/40 transition-all"><i
+                                class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#"
+                            class="w-9 h-9 rounded-xl glass-card flex items-center justify-center hover:text-brand-teal hover:border-brand-teal/40 transition-all"><i
+                                class="fa-brands fa-telegram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Copyright -->
+            <div class="border-t border-slate-800/80 pt-6 text-center text-xs text-slate-500 font-medium">
+                <p>© ۲۰۲۶ تمامی حقوق برای تیم Apexo محفوظ است.</p>
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+
+</html>
