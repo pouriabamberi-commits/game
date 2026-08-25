@@ -143,7 +143,8 @@
 
                 <!-- 2. Desktop Navigation (شامل هر ۶ بخش درخواست‌شده) -->
                 <nav class="hidden lg:flex items-center gap-6 text-sm font-bold text-slate-300">
-                    <a href="#home" class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
+                    <a href="./index.html"
+                        class="hover:text-brand-teal transition-colors flex items-center gap-1.5 py-2">
                         <i class="fa-solid fa-house text-xs text-brand-teal"></i>
                         <span>خانه</span>
                     </a>
@@ -541,6 +542,44 @@
         </div>
     </main>
 
+    <!-- ==================== MOBILE APP DOCK (FLOATING BOTTOM NAV) ==================== -->
+    <!-- این بخش فقط در موبایل ظاهر می‌شود و حس نوار ابزار اپلیکیشن را ایجاد می‌کند -->
+    <div class="fixed bottom-3 left-4 right-4 z-50 md:hidden">
+        <div
+            class="glass-card rounded-2xl p-2.5 flex items-center justify-around border-brand-teal/30 shadow-2xl backdrop-blur-2xl bg-slate-950/85">
+
+            <a href="./index.html"
+                class="flex flex-col items-center gap-1 text-slate-400 hover:text-brand-teal transition-all active:scale-90">
+                <i class="fa-solid fa-house text-lg"></i>
+                <span class="text-[10px] font-bold">خانه</span>
+            </a>
+
+            <a href="./servise.html"
+                class="flex flex-col items-center gap-1 text-slate-400 hover:text-brand-teal transition-all active:scale-90">
+                <i class="fa-solid fa-layer-group text-lg"></i>
+                <span class="text-[10px] font-bold">خدمات</span>
+            </a>
+
+            <!-- Floating Action CTA Button (Center App Hub) -->
+            <button onclick="handleConsultationClick()"
+                class="relative -top-5 w-12 h-12 rounded-2xl btn-gradient flex items-center justify-center text-brand-dark font-black shadow-lg shadow-brand-teal/40 active:scale-95 border-2 border-slate-950">
+                <i class="fa-solid fa-headset text-xl"></i>
+            </button>
+
+            <a href="./portfolio.html"
+                class="flex flex-col items-center gap-1 text-slate-400 hover:text-brand-teal transition-all active:scale-90">
+                <i class="fa-solid fa-briefcase text-lg"></i>
+                <span class="text-[10px] font-bold">نمونه‌کارها</span>
+            </a>
+
+            <a href="#contact-footer"
+                class="flex flex-col items-center gap-1 text-slate-400 hover:text-brand-teal transition-all active:scale-90">
+                <i class="fa-solid fa-paper-plane text-lg"></i>
+                <span class="text-[10px] font-bold">ارتباط</span>
+            </a>
+
+        </div>
+    </div>
     <!-- ==================== ULTIMATE APP-LIKE FOOTER ==================== -->
     <footer id="contact-footer"
         class="relative pt-16 pb-28 md:pb-12 border-t border-brand-teal/15 bg-slate-950/90 overflow-hidden">
