@@ -13,3 +13,7 @@
     --color-brand-accent: #05b292;
     --color-brand-glow: rgba(0, 245, 212, 0.35);
 }
+
+html,body{
+    width: 100% !important;
+}
